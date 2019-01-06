@@ -1,3 +1,4 @@
+from summarizer import *
 from flask import Flask, render_template, request
 import logging
 
