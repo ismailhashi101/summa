@@ -1,0 +1,1938 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-26778140-6"
+    ></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-26778140-6");
+    </script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="description"
+      content="Summarize articles, text, websites, essays and documents for free with SMMRY"
+    />
+    <meta
+      name="keywords"
+      content="smmry, summarize, summary generator, summary, summarizer, summarizing, summarizing tool, article summary, text summary, pdf summary, document summary"
+    />
+    <meta content="initial-scale=0.60, user-scalable=yes" name="viewport" />
+
+    <link rel="SHORTCUT ICON" href="https://smmry.com/favicon.ico" />
+
+    <title>
+      SMMRY - Summarize articles, text, websites, essays and documents
+    </title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://smmry.com/common.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://smmry.com/sm_upload_style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://smmry.com/footer.css"
+    />
+
+    <link rel="image_src" href="https://smmry.com/sm_images/sm_thumbnail.png" />
+    <script type="text/javascript">
+      function sm_microtime(get_as_float) {
+        var now = new Date().getTime() / 1000;
+        var s = parseInt(now, 10);
+
+        return get_as_float
+          ? now
+          : Math.round((now - s) * 1000) / 1000 + " " + s;
+      }
+    </script>
+    <style type="text/css">
+      body {
+        height: 100%;
+      }
+
+      div.sm_full_cover {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #333;
+        z-index: 9000;
+      }
+
+      .sm_block_put {
+        position: relative;
+        top: 1px;
+        height: 26px;
+      }
+    </style>
+    <div
+      id="sm_full_cover_element"
+      class="sm_full_cover"
+      style="display: none"
+    ></div>
+
+    <div
+      id="sm_register_main_container"
+      align="center"
+      style="display: none; position: absolute; top: 0; left: 0; width: 100%"
+    >
+      <div
+        style="
+          position: relative;
+          top: 150px;
+          background-color: #fff;
+          width: 350px;
+          height: 340px;
+          border-style: solid;
+          border-width: 0px;
+          border-color: #333;
+          z-index: 9010;
+          opacity: 1;
+          border-radius: 20px 20px 20px 20px;
+          -moz-border-radius: 20px 20px 20px 20px;
+          -webkit-border-radius: 20px 20px 20px 20px;
+          border: 0px solid #000000;
+        "
+      >
+        <div
+          id="sm_register_success_container"
+          align="left"
+          style="
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 305px;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 16px;
+          "
+        >
+          <span style="font-weight: bold; font-size: 20px">Success!</span
+          ><br />You've been successfully registered and logged in as
+          <span
+            id="sm_register_success_username"
+            style="font-weight: bold"
+          ></span
+          >.<br /><br />You can now access more features.<br /><br />You
+          completed the registration form in
+          <span id="sm_register_success_time" style="font-weight: bold"></span>
+          seconds.<br /><br />The average is
+          <span
+            id="sm_register_success_time_average"
+            style="font-weight: bold"
+          ></span>
+          seconds.<br /><br />Please be aware that some features are currently
+          in beta.
+          <div align="right" style="position: relative; top: 6px">
+            <input
+              id="sm_register_button"
+              type="button"
+              style="
+                position: relative;
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+                background-color: #1c7bff;
+                border-bottom-color: #0061e8;
+                border-left-color: #3085fc;
+                border-right-color: #0061e8;
+                border-top-color: #3085fc;
+                width: 160px;
+                height: 30px;
+              "
+              onclick="sm_register_remove();"
+              onmouseover="this.style.cursor = 'pointer'"
+              value="CONTINUE"
+            />
+          </div>
+        </div>
+        <div
+          id="sm_register_form_container"
+          align="left"
+          style="
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 305px;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 16px;
+          "
+        >
+          <span style="font-size: 14px"
+            >Registration is free, quick, and gives you access to more
+            features.</span
+          ><br /><br />
+          <form id="sm_register_form" name="sm_register_form" method="post">
+            <div align="right" style="position: absolute; left: 0">
+              <div class="sm_block_put">Full Name:</div>
+              <div class="sm_block_put">Username:</div>
+              <div class="sm_block_put">Valid Email:</div>
+              <div class="sm_block_put">Password:</div>
+              <div class="sm_block_put">Password Again:</div>
+              <div class="sm_block_put" style="top: 5px">
+                Captcha code:<br /><span
+                  style="
+                    position: relative;
+                    top: -5px;
+                    font-size: 12px;
+                    color: #00f;
+                  "
+                  onclick="document.getElementById('sm_register_captcha_image').src = 'https://smmry.com/sm_captcha/securimage_show.php?' + Math.random(); sm_register_flush(document.getElementById('sm_register_captcha')); return false;"
+                  onmouseover="this.style.cursor = 'pointer'"
+                  >[refresh]</span
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </div>
+            </div>
+            <div
+              align="left"
+              style="position: absolute; left: 292px; width: 500px"
+            >
+              <div id="sm_register_fullname_notice" class="sm_block_put"></div>
+              <div id="sm_register_username_notice" class="sm_block_put"></div>
+              <div id="sm_register_email_notice" class="sm_block_put"></div>
+              <div id="sm_register_password_notice" class="sm_block_put"></div>
+              <div
+                id="sm_register_password_again_notice"
+                class="sm_block_put"
+              ></div>
+              <div
+                id="sm_register_captcha_notice"
+                class="sm_block_put"
+                style="top: 29px"
+              ></div>
+            </div>
+            <div align="left" style="position: absolute; right: 0">
+              <div class="sm_block_put">
+                <input
+                  name="sm_register_fullname"
+                  id="sm_register_fullname"
+                  type="text"
+                  style="
+                    width: 140px;
+                    border-style: solid;
+                    border-width: 2px;
+                    border-color: #ead9ff;
+                  "
+                  onkeyup="sm_register_flush(this);"
+                />
+              </div>
+              <div class="sm_block_put">
+                <input
+                  name="sm_register_username"
+                  id="sm_register_username"
+                  type="text"
+                  style="
+                    position: relative;
+                    width: 140px;
+                    border-style: solid;
+                    border-width: 2px;
+                    border-color: #ead9ff;
+                  "
+                  onkeyup="sm_register_flush(this);"
+                />
+              </div>
+              <div class="sm_block_put">
+                <input
+                  name="sm_register_email"
+                  id="sm_register_email"
+                  type="text"
+                  style="
+                    position: relative;
+                    width: 140px;
+                    border-style: solid;
+                    border-width: 2px;
+                    border-color: #ead9ff;
+                  "
+                  onkeyup="sm_register_flush(this);"
+                />
+              </div>
+              <div class="sm_block_put">
+                <input
+                  name="sm_register_password"
+                  id="sm_register_password"
+                  type="password"
+                  style="
+                    position: relative;
+                    width: 140px;
+                    border-style: solid;
+                    border-width: 2px;
+                    border-color: #ead9ff;
+                  "
+                  onkeyup="sm_register_flush(this);"
+                />
+              </div>
+              <div class="sm_block_put">
+                <input
+                  name="sm_register_password_again"
+                  id="sm_register_password_again"
+                  type="password"
+                  style="
+                    position: relative;
+                    width: 140px;
+                    border-style: solid;
+                    border-width: 2px;
+                    border-color: #ead9ff;
+                  "
+                  onkeyup="sm_register_flush(this);"
+                /><br /><img
+                  style="position: relative; top: -5px; z-index: -100"
+                  id="sm_register_captcha_image"
+                  src="https://smmry.com/sm_captcha/securimage_show.php"
+                  alt="CAPTCHA Image"
+                />
+              </div>
+              <div class="sm_block_put" style="top: 28px">
+                <input
+                  name="sm_register_captcha"
+                  id="sm_register_captcha"
+                  type="text"
+                  style="
+                    position: relative;
+                    width: 140px;
+                    border-style: solid;
+                    border-width: 2px;
+                    border-color: #ead9ff;
+                  "
+                  onkeyup="sm_register_flush(this);"
+                />
+              </div>
+              <br /><br />
+              <div
+                style="
+                  position: relative;
+                  top: -12px;
+                  font-family: Verdana, Arial, Helvetica, sans-serif;
+                  font-size: 12px;
+                "
+              >
+                <input
+                  name="sm_check_terms"
+                  id="sm_check_terms"
+                  type="checkbox"
+                  style="
+                    position: relative;
+                    left: -4px;
+                    outline-style: solid;
+                    outline-width: 0px;
+                    outline-color: red;
+                  "
+                  onclick="sm_register_check_clear();"
+                /><span style="position: relative; left: -4px">
+                  I agree to these
+                  <span
+                    style="text-decoration: underline; color: #00f"
+                    onclick="sm_terms_launch()"
+                    onmouseover="this.style.cursor = 'pointer';"
+                    >terms</span
+                  >.</span
+                >
+              </div>
+              <br />
+              <div
+                align="center"
+                id="sm_register_submit_loader"
+                style="
+                  display: none;
+                  position: absolute;
+                  top: 222px;
+                  width: 100%;
+                  left: -80px;
+                "
+              >
+                <img src="/sm_images/sm_load_twirl.gif" />
+              </div>
+              <div
+                align="right"
+                id="sm_register_submit_container"
+                style="
+                  position: absolute;
+                  top: 206px;
+                  width: 280px;
+                  left: -122px;
+                "
+              >
+                <input
+                  id="sm_register_clear"
+                  type="button"
+                  style="
+                    position: relative;
+                    font-family: Verdana, Arial, Helvetica, sans-serif;
+                    font-size: 18px;
+                    font-weight: bold;
+                    background-color: #f2ec43;
+                    border-bottom-color: #bdbd00;
+                    border-left-color: #ffff24;
+                    border-right-color: #bdbd00;
+                    border-top-color: #ffff24;
+                    width: 110px;
+                    height: 30px;
+                  "
+                  onclick="sm_register_remove();"
+                  onmouseover="this.style.cursor = 'pointer'"
+                  value="CANCEL"
+                />&nbsp;<input
+                  id="sm_register_button"
+                  type="button"
+                  style="
+                    position: relative;
+                    font-family: Verdana, Arial, Helvetica, sans-serif;
+                    font-size: 18px;
+                    font-weight: bold;
+                    background-color: #ff6600;
+                    border-bottom-color: #bdbd00;
+                    border-left-color: #ff9933;
+                    border-right-color: #bdbd00;
+                    border-top-color: #ff9933;
+                    width: 160px;
+                    height: 30px;
+                  "
+                  onclick="sm_register_submit();"
+                  onmouseover="this.style.cursor = 'pointer'"
+                  value="REGISTER"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="sm_login_main_container"
+      align="center"
+      style="display: none; position: absolute; top: 0; left: 0; width: 100%"
+    >
+      <div
+        style="
+          position: relative;
+          top: 150px;
+          background-color: #fff;
+          width: 290px;
+          height: 170px;
+          border-style: solid;
+          border-width: 0px;
+          border-color: #333;
+          z-index: 9010;
+          opacity: 1;
+          border-radius: 20px 20px 20px 20px;
+          -moz-border-radius: 20px 20px 20px 20px;
+          -webkit-border-radius: 20px 20px 20px 20px;
+          border: 0px solid #000000;
+        "
+      >
+        <div
+          id="sm_login_form_container"
+          align="left"
+          style="
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 250px;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 16px;
+          "
+        >
+          <span id="sm_login_prompt" style="font-size: 14px"
+            >Enter your login credentials below.</span
+          ><span
+            id="sm_login_error"
+            style="
+              display: none;
+              font-size: 14px;
+              font-weight: bold;
+              color: #f00;
+            "
+            >Incorrect login credentials.</span
+          >
+          <form
+            id="sm_login_form"
+            name="sm_login_form"
+            style="position: relative; top: 10px"
+            method="post"
+          >
+            <div align="right" style="position: absolute; left: 10px">
+              <div class="sm_block_put">Username:</div>
+              <div class="sm_block_put">
+                Password:<br /><span
+                  style="font-size: 12px; color: #00f"
+                  onclick="alert('Please contact us via the contact form to recover your account')"
+                  onmouseover="this.style.cursor = 'pointer'"
+                  >(Forgot?)</span
+                >&nbsp;&nbsp;
+              </div>
+            </div>
+            <div align="left" style="position: absolute; right: 20px">
+              <div class="sm_block_put">
+                <input
+                  name="sm_login_username"
+                  id="sm_login_username"
+                  type="text"
+                  style="
+                    position: relative;
+                    width: 120px;
+                    border-style: solid;
+                    border-width: 2px;
+                    border-color: #ead9ff;
+                  "
+                  onkeyup="sm_login_flush(this);"
+                />
+              </div>
+              <div class="sm_block_put">
+                <input
+                  name="sm_login_password"
+                  id="sm_login_password"
+                  type="password"
+                  style="
+                    position: relative;
+                    width: 120px;
+                    border-style: solid;
+                    border-width: 2px;
+                    border-color: #ead9ff;
+                  "
+                  onkeyup="sm_login_flush(this);"
+                />
+              </div>
+              <div
+                style="
+                  position: relative;
+                  top: 0px;
+                  font-family: Verdana, Arial, Helvetica, sans-serif;
+                  font-size: 12px;
+                "
+              >
+                <input
+                  name="sm_login_remember"
+                  id="sm_login_remember"
+                  type="checkbox"
+                  style="
+                    position: relative;
+                    left: 16px;
+                    outline-style: solid;
+                    outline-width: 0px;
+                  "
+                  checked
+                /><span style="position: relative; left: 16px">
+                  Remember me</span
+                >
+              </div>
+              <br />
+              <div
+                align="center"
+                id="sm_login_submit_success"
+                style="
+                  display: none;
+                  position: absolute;
+                  top: 80px;
+                  width: 100%;
+                  left: -40px;
+                  font-size: 18px;
+                  font-weight: bold;
+                "
+              >
+                Success!
+              </div>
+              <div
+                align="center"
+                id="sm_login_submit_loader"
+                style="
+                  display: none;
+                  position: absolute;
+                  top: 80px;
+                  width: 100%;
+                  left: -40px;
+                "
+              >
+                <img src="/sm_images/sm_load_twirl.gif" />
+              </div>
+              <div
+                align="right"
+                id="sm_login_submit_container"
+                style="
+                  position: absolute;
+                  top: 75px;
+                  width: 250px;
+                  left: -124px;
+                "
+              >
+                <input
+                  id="sm_login_clear"
+                  type="button"
+                  style="
+                    position: relative;
+                    font-family: Verdana, Arial, Helvetica, sans-serif;
+                    font-size: 18px;
+                    font-weight: bold;
+                    background-color: #f2ec43;
+                    border-bottom-color: #bdbd00;
+                    border-left-color: #ffff24;
+                    border-right-color: #bdbd00;
+                    border-top-color: #ffff24;
+                    width: 110px;
+                    height: 30px;
+                  "
+                  onclick="sm_login_remove();"
+                  onmouseover="this.style.cursor = 'pointer'"
+                  value="CANCEL"
+                />&nbsp;<input
+                  id="sm_login_button"
+                  type="button"
+                  style="
+                    position: relative;
+                    font-family: Verdana, Arial, Helvetica, sans-serif;
+                    font-size: 18px;
+                    font-weight: bold;
+                    background-color: #33cc00;
+                    border-bottom-color: #bdbd00;
+                    border-left-color: #33ff33;
+                    border-right-color: #bdbd00;
+                    border-top-color: #33ff33;
+                    width: 100px;
+                    height: 30px;
+                  "
+                  onclick="sm_login_submit();"
+                  onmouseover="this.style.cursor = 'pointer'"
+                  value="LOGIN"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="sm_terms_main_container"
+      align="center"
+      style="display: none; position: absolute; top: 0; left: 0; width: 100%"
+    >
+      <div
+        style="
+          position: relative;
+          top: 145px;
+          background-color: #fff;
+          width: 400px;
+          height: 350px;
+          z-index: 9020;
+          opacity: 1;
+          border-radius: 20px 20px 20px 20px;
+          -moz-border-radius: 20px 20px 20px 20px;
+          -webkit-border-radius: 20px 20px 20px 20px;
+          border: 0px solid #000000;
+        "
+      >
+        <div
+          id="sm_terms_form_container"
+          align="left"
+          style="
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 390px;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 16px;
+          "
+        >
+          <div
+            style="width: 350px; height: 260px; font-size: 12px; overflow: auto"
+          >
+            <span style="font-size: 14px; font-weight: bold">1)</span> SMMRY.COM
+            reserves the right to revoke access to this site at our
+            discretion.<br /><span style="font-size: 14px; font-weight: bold"
+              >2)</span
+            >
+            YOU will not make a clone of SMMRY.COM using the API.<br /><span
+              style="font-size: 14px; font-weight: bold"
+              >3)</span
+            >
+            SMMRY.COM reserves the right to alter these terms without explicit
+            notification.<br /><span style="font-size: 14px; font-weight: bold"
+              >4)</span
+            >
+            YOUR implicit use of this site binds you to these terms.
+          </div>
+          <input
+            id="sm_terms_clear"
+            type="button"
+            style="
+              position: relative;
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              font-size: 18px;
+              font-weight: bold;
+              background-color: #f2ec43;
+              border-bottom-color: #bdbd00;
+              border-left-color: #ffff24;
+              border-right-color: #bdbd00;
+              border-top-color: #ffff24;
+              width: 110px;
+              height: 30px;
+            "
+            onclick="sm_terms_remove();"
+            onmouseover="this.style.cursor = 'pointer'"
+            value="CLOSE"
+          />
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://smmry.com/qq.js"></script>
+  </head>
+
+  <body>
+    <div align="center" style="position: relative; top: 20px">
+      <a href="https://smmry.com" style="border-style: none" tabindex="-1"
+        ><img
+          src="https://smmry.com/sm_images/sm_logo.png"
+          border="0"
+          alt="SMMRY - Summarize Everything" /></a
+      ><noscript
+        ><div
+          style="
+            position: relative;
+            top: 10px;
+            left: 0px;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 17px;
+            font-weight: bold;
+            background-color: #eefa11;
+            width: 600px;
+          "
+        >
+          PLEASE ENABLE JAVASCRIPT FOR THIS SITE TO WORK
+        </div></noscript
+      >
+    </div>
+    <div
+      id="sm_primary_interface"
+      align="center"
+      style="display: block; position: relative; top: 35px"
+    >
+      <form
+        name="sm_container_primary"
+        method="post"
+        action="https://smmry.com/sm_post_process.php"
+      >
+        <div align="center" style="position: relative; top: -8px">
+          <div
+            align="center"
+            id="sm_errorbar_primary"
+            style="display:none;width:100%left:0px;"
+            onmouseover="this.style.cursor = 'pointer'"
+            onclick="sm_errorbar_clear('primary');"
+          ></div>
+        </div>
+        <div align="center" style="position: relative; top: -8px">
+          <div
+            id="sm_registerbar_primary"
+            style="
+              display: none;
+              left: 0px;
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              font-size: 17px;
+              font-weight: bold;
+              background-color: #ead9ff;
+              width: 402px;
+              height: 62px;
+              overflow: visible;
+              padding: 4px;
+            "
+          ></div>
+        </div>
+        <div style="position: relative; height: 0px">
+          <div
+            id="sm_count_error_primary"
+            style="
+              display: none;
+              position: relative;
+              top: -3px;
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              font-size: 14px;
+              font-weight: bold;
+              border: 4px solid #ab0000;
+              background-color: #e80000;
+              left: -265px;
+              width: 100px;
+              height: 18px;
+            "
+          ></div>
+        </div>
+        <span
+          style="
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 16px;
+          "
+          >Summarize my text in
+          <input
+            id="sm_count_primary"
+            name="sm_count_primary"
+            style="
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              width: 20px;
+              text-align: center;
+            "
+            onClick="sm_singular_method_check();sm_select_count(this);"
+            onKeyPress="return numbersonly(event, false);"
+            onKeyUp="sm_singular_method_check();"
+            type="text"
+            autocomplete="off"
+            maxlength="2"
+            value="7"
+          />
+          sentences.</span
+        ><br /><textarea
+          name="sm_input"
+          id="sm_input"
+          spellcheck="false"
+          class="sm_input_alone"
+          onClick="sm_input_selected();"
+          onKeyUp="sm_input_selected();"
+          onpaste="sm_input_selected();"
+          onSelect="sm_input_selected();"
+          onFocus="sm_input_selected();"
+          onBlur="sm_input_alone();"
+        >
+SMMRY summarizes text to save you time.
+
+Paste an article, text or essay in this box and hit summarize; we'll return a shortened copy for you to read.
+
+You can also summarize PDF and TXT documents by uploading a file or summarize online articles and webpages by pasting the URL below...</textarea
+        ><span style="position: relative; top: 5px"
+          ><div style="position: relative; height: 0px">
+            <input
+              id="sm_input_clear"
+              onmouseover="this.style.cursor = 'pointer'"
+              style="
+                display: none;
+                position: relative;
+                top: -250px;
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+                background-color: #f2ec43;
+                border-color: #bfba35;
+                right: 0px;
+                width: 140px;
+                height: 28px;
+                z-index: 20;
+              "
+              value="CLEAR"
+              type="button"
+              onClick="sm_input_clear_execute()"
+            />
+          </div>
+          <div style="position: relative; height: 0px">
+            <input
+              id="sm_force_url_clear"
+              onmouseover="this.style.cursor = 'pointer'"
+              style="
+                display: none;
+                position: relative;
+                top: 5px;
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+                background-color: #f2ec43;
+                border-color: #bfba35;
+                right: 0px;
+                width: 140px;
+                height: 28px;
+                z-index: 20;
+                color: rgb(33, 33, 33);
+              "
+              value="CLEAR"
+              type="button"
+              onClick="sm_force_url_clear_execute()"
+            />
+          </div>
+          <div style="position: relative; height: 0px">
+            <input
+              id="sm_force_url_follow"
+              onmouseover="this.style.cursor = 'pointer'"
+              style="
+                display: none;
+                position: relative;
+                top: 5px;
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+                background-color: #1c7bff;
+                border-color: #1968d6;
+                left: 0px;
+                width: 140px;
+                height: 28px;
+                z-index: 20;
+                color: #fff;
+              "
+              value="GO TO URL"
+              type="button"
+              onClick="sm_force_url_follow_execute();"
+            />
+          </div>
+          <div
+            style="
+              position: relative;
+              width: 411px;
+              height: 38px;
+              top: 2px;
+              left: 0;
+              margin: 0;
+              padding: 0;
+            "
+          >
+            <div
+              id="sm_upload_instance"
+              style="
+                position: absolute;
+                left: 0;
+                width: 144px;
+                height: 27px;
+                margin: 0;
+                padding: 0;
+              "
+            >
+              <input
+                name="sm_force_upload"
+                id="sm_force_upload"
+                type="text"
+                style="position: relative; left: 1px"
+                class="sm_force_upload_alone"
+                value="Upload a file,"
+                tabindex="-1"
+              />
+            </div>
+            <div style="position: absolute; right: 0">
+              <input
+                name="sm_force_url"
+                id="sm_force_url"
+                type="text"
+                class="sm_force_url_alone"
+                value="Or paste a URL here."
+                spellcheck="false"
+                onClick="sm_force_url_selected();"
+                onKeyUp="sm_force_url_selected();"
+                onSelect="sm_force_url_selected();"
+                onFocus="sm_force_url_selected();"
+                onBlur="sm_force_url_alone();"
+              />
+            </div></div
+        ></span>
+        <div
+          align="center"
+          style="
+            position: relative;
+            top: 10px;
+            width: 412px;
+            height: 45px;
+            z-index: 40;
+          "
+        >
+          <div style="position: absolute; top: 0; left: 0">
+            <input
+              id="sm_settings_button_primary"
+              style="
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+                background-color: #f2ec43;
+                border-color: #bfba35;
+                width: 160px;
+                height: 28px;
+                top: 20px;
+                color: rgb(33, 33, 33);
+              "
+              onmouseover="this.style.cursor = 'pointer'"
+              value="SETTINGS"
+              type="button"
+              onClick="sm_settings_process()"
+            />
+          </div>
+          <div style="position: absolute; top: 0; right: 0">
+            <input
+              name="sm_force_upload_file"
+              id="sm_force_upload_file"
+              type="hidden"
+              value="sm_null"
+            /><input
+              name="sm_check_question_avoid"
+              id="sm_check_question_avoid"
+              type="hidden"
+              value="off"
+            /><input
+              name="sm_check_exclamation_avoid"
+              id="sm_check_exclamation_avoid"
+              type="hidden"
+              value="off"
+            /><input
+              name="sm_check_quote_avoid"
+              id="sm_check_quote_avoid"
+              type="hidden"
+              value="off"
+            /><input
+              name="sm_check_heat_map"
+              id="sm_check_heat_map"
+              type="hidden"
+              value="off"
+            /><input
+              id="sm_submit"
+              name="sm_submit"
+              style="
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 20px;
+                font-weight: bold;
+                background-color: #c141c1;
+                border-color: #a538a5;
+                width: 170px;
+                height: 40px;
+                color: #fff;
+                top: 20px;
+              "
+              onmouseover="this.style.cursor = 'pointer'"
+              onclick="sm_summarize()"
+              value="SUMMARIZE"
+              type="button"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div align="center" style="position: relative; top: 25px">
+      <div
+        id="sm_errorbar_secondary"
+        style="display: none; width: 100%"
+        onmouseover="this.style.cursor = 'pointer'"
+        onclick="sm_errorbar_clear('secondary');"
+      ></div>
+    </div>
+    <div align="center" style="position: relative; top: 25px">
+      <div
+        id="sm_registerbar_secondary"
+        style="
+          display: none;
+          left: 0px;
+          font-family: Verdana, Arial, Helvetica, sans-serif;
+          font-size: 17px;
+          font-weight: bold;
+          background-color: #ead9ff;
+          width: 450px;
+          height: 62px;
+          overflow: visible;
+          padding: 4px;
+        "
+      ></div>
+    </div>
+    <div
+      align="center"
+      style="
+        position: relative;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        top: 28px;
+      "
+    >
+      <div style="position: relative; height: 0px">
+        <div
+          id="sm_count_error_secondary"
+          style="
+            display: none;
+            position: relative;
+            top: -3px;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            border: 4px solid #ab0000;
+            background-color: #e80000;
+            left: -405px;
+            width: 100px;
+            height: 18px;
+          "
+        ></div>
+      </div>
+      <form name="sm_container_count_secondary" method="post">
+        <div
+          id="sm_secondary_upper_bar"
+          style="
+            display: none;
+            position: relative;
+            top: 50px;
+            font-size: 16px;
+            z-index: -10;
+          "
+        >
+          This is a
+          <input
+            id="sm_count_secondary"
+            name="sm_count_secondary"
+            style="
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              width: 20px;
+              text-align: center;
+            "
+            autocomplete="off"
+            maxlength="2"
+            onClick="sm_select_count(this);"
+            onKeyPress="return sm_count_process(event);"
+            onKeyUp="sm_resummarize_count(0);"
+            onfocus="window.SM_COUNT_FOCUS = true;"
+            onblur="window.SM_COUNT_FOCUS = false;"
+            type="text"
+            value="7"
+            tabindex="-1"
+          />
+          sentence summary of
+        </div>
+        <input
+          id="sm_flashbar_key_input"
+          type="text"
+          onkeydown="sm_flashbar_key_cycle()"
+          onblur="sm_flashbar_recover()"
+          style="
+            position: fixed;
+            top: 0px;
+            left: -100px;
+            width: 40px;
+            z-index: 0;
+          "
+          tabindex="-1"
+        />
+        <div
+          id="sm_flashbar_container"
+          style="
+            display: none;
+            position: relative;
+            width: 678px;
+            height: 24px;
+            z-index: -10;
+          "
+        >
+          <div
+            align="left"
+            id="sm_flashbar_main"
+            style="
+              position: absolute;
+              left: -3px;
+              width: 552px;
+              height: 19px;
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              font-size: 16px;
+              font-color: #666;
+              border: solid;
+              border-width: 2px;
+              border-color: #666;
+              overflow: visible;
+            "
+            onmouseout="sm_flashbar_mouseout()"
+            onmouseover="sm_flashbar_mouseover()"
+          ></div>
+          <div style="position: absolute; right: 0">
+            <input
+              id="sm_flash_strict_check"
+              type="checkbox"
+              onchange="sm_resummarize_process(0)"
+              tabindex="-1"
+            /><span style="position: relative; left: 3px">Strict&nbsp;Scan</span
+            ><span
+              id="sm_tip_strict_scan"
+              style="
+                position: relative;
+                left: 3px;
+                vertical-align: super;
+                font-size: 10px;
+                color: #595856;
+              "
+              onmouseover="this.style.cursor = 'pointer';sm_tip_add(this);"
+              onmouseout="sm_tip_remove(this);"
+              >&nbsp;[?]</span
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+    <div
+      align="center"
+      id="sm_outer_debug"
+      style="display: none; position: relative; top: 34px"
+    >
+      <div
+        align="left"
+        id="sm_container_debug"
+        style="
+          display: none;
+          width: 670px;
+          background-color: #ed1a4f;
+          padding: 10px;
+        "
+      ></div>
+      <br /><br />
+    </div>
+    <div
+      id="sm_secondary_interface"
+      align="center"
+      style="display: none; position: relative; top: 28px; height: 420px"
+    >
+      <form name="sm_container_secondary" method="post">
+        <div
+          id="sm_container_secondary"
+          style="
+            display: none;
+            position: relative;
+            top: -24px;
+            width: 690px;
+            height: 420px;
+            background-color: #ead9ff;
+          "
+        >
+          <div align="right" style="position: relative; top: 0; right: 0">
+            <div style="height: 22px; width: 10px"></div>
+          </div>
+          <div
+            id="sm_secondary_inner_interface"
+            style="
+              display: none;
+              position: relative;
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              font-size: 16px;
+              height: 398px;
+              overflow: hidden;
+            "
+          >
+            <div
+              align="left"
+              id="sm_container_output"
+              style="
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 16px;
+                overflow: hidden;
+                width: 650px;
+                padding: 10px;
+              "
+            ></div>
+          </div>
+          <div
+            id="sm_secondary_text_style"
+            align="left"
+            style="
+              display: none;
+              position: relative;
+              height: 20px;
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              font-size: 12px;
+              overflow: hidden;
+              width: 670px;
+              background-color: #cebee2;
+              padding: 10px;
+              line-height: 20px;
+            "
+          >
+            <div style="position: absolute; left: 10px; width: 350px">
+              <span style="position: relative; top: -1px; font-weight: bold"
+                >Reduced By:</span
+              >&nbsp;<input
+                id="sm_reduction_main"
+                type="text"
+                maxlength="3"
+                style="
+                  width: 22px;
+                  height: 12px;
+                  background-color: #cebee2;
+                  border-color: #b7a3d1;
+                  font-size: 12px;
+                  padding: 2px;
+                "
+                value="56"
+                autocomplete="off"
+                onclick="sm_select_count(this);"
+                onKeyPress="return sm_count_process(event);"
+                onKeyUp="sm_resummarize_reduction(0);"
+                onfocus="window.SM_REDUCTION_FOCUS = true;"
+                onblur="window.SM_REDUCTION_FOCUS = false;"
+              />%&nbsp;&nbsp;<span
+                style="position: relative; top: -1px; font-weight: bold"
+                >Characters:</span
+              >&nbsp;<input
+                id="sm_character_main"
+                type="text"
+                maxlength="5"
+                style="
+                  width: 35px;
+                  height: 12px;
+                  background-color: #cebee2;
+                  border-color: #b7a3d1;
+                  font-size: 12px;
+                  padding: 2px;
+                "
+                value="56"
+                autocomplete="off"
+                onclick="sm_select_count(this);"
+                onKeyPress="return sm_count_process(event);"
+                onKeyUp="sm_resummarize_character(0);"
+                onfocus="window.SM_CHARACTER_FOCUS = true;"
+                onblur="window.SM_CHARACTER_FOCUS = false;"
+              />
+            </div>
+          </div>
+        </div>
+      </form>
+      <br />
+    </div>
+    <div
+      id="sm_lower_main_container"
+      align="center"
+      style="position: relative; top: -12px; height: 20px"
+    >
+      <div
+        id="sm_lower_container"
+        style="
+          display: none;
+          position: relative;
+          top: 35px;
+          width: 685px;
+          z-index: -10;
+        "
+      >
+        <div style="position: absolute; top: 0; left: 0">
+          <input
+            id="sm_settings_button_secondary"
+            style="
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              font-size: 14px;
+              font-weight: bold;
+              background-color: #f2ec43;
+              border-color: #bfba35;
+              width: 160px;
+              height: 28px;
+              top: 20px;
+            "
+            onmouseover="this.style.cursor = 'pointer'"
+            value="SETTINGS"
+            type="button"
+            onClick="sm_settings_process()"
+          />
+        </div>
+        <div style="position: absolute; top: 0; right: 0">
+          <input
+            id="sm_share_summary"
+            style="
+              display: none;
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              font-size: 14px;
+              font-weight: bold;
+              background-color: #c141c1;
+              border-color: #a538a5;
+              width: 165px;
+              height: 28px;
+              top: 20px;
+              color: #fff;
+            "
+            onmouseover="this.style.cursor = 'pointer'"
+            value="SHARE SUMMARY"
+            type="button"
+            onClick="sm_share_summary_initiate()"
+          />&nbsp;&nbsp;<input
+            id="sm_new_summary"
+            style="
+              font-family: Verdana, Arial, Helvetica, sans-serif;
+              font-size: 14px;
+              font-weight: bold;
+              background-color: #c141c1;
+              border-color: #a538a5;
+              width: 140px;
+              height: 28px;
+              top: 20px;
+              color: #fff;
+            "
+            onmouseover="this.style.cursor = 'pointer'"
+            value="NEW SUMMARY"
+            type="button"
+            onClick="window.location = 'https://smmry.com'"
+          />
+        </div>
+      </div>
+      <div
+        id="sm_share_container"
+        style="
+          display: none;
+          font-family: Verdana, Arial, Helvetica, sans-serif;
+          position: relative;
+          top: 0px;
+          left: 0px;
+          z-index: 10;
+        "
+      >
+        <div style="position: relative; width: 690px">
+          <div style="position: absolute; left: 0">
+            <div
+              align="center"
+              id="sm_share_connect_load_element"
+              style="position: relative; width: 440px; top: 4px"
+            >
+              <img src="sm_images/sm_load_twirl.gif" />
+            </div>
+            <iframe
+              id="sm_share_connect"
+              scrolling="no"
+              frameborder="0"
+              onload="sm_share_connect_load();"
+              style="
+                display: none;
+                position: relative;
+                width: 440px;
+                height: 28px;
+              "
+            ></iframe>
+          </div>
+          <div style="position: absolute; right: 0">
+            <input
+              id="sm_share_clear"
+              onmouseover="this.style.cursor = 'pointer'"
+              style="
+                position: relative;
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+                background-color: #f2ec43;
+                border-color: #bfba35;
+                right: 0px;
+                width: 75px;
+                height: 28px;
+                z-index: 20;
+              "
+              value="CLOSE"
+              type="button"
+              onClick="sm_share_summary_remove();"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        id="sm_rate_container"
+        style="
+          display: none;
+          position: relative;
+          top: 0px;
+          left: -4px;
+          z-index: 10;
+        "
+      >
+        &nbsp;&nbsp;<span
+          style="
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+          "
+          >RELEVANCE</span
+        >&nbsp;<input
+          id="sm_informativeness_score"
+          type="text"
+          maxlength="1"
+          style="
+            width: 10px;
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: red;
+          "
+          onClick="sm_rate_summary_clear(this);sm_select_count(this);"
+          onKeyPress="return sm_count_process(event);"
+          onKeyUp="sm_rate_summary_clear(this);"
+          onmouseover="sm_rate_summary_info_add('sm_informativeness_score', this)"
+          onmouseout="sm_rate_summary_info_remove()"
+        /><span
+          style="
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+          "
+          >&nbsp;/5</span
+        >&nbsp;&nbsp;<span
+          style="
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+          "
+          >EFFICIENCY</span
+        >&nbsp;<input
+          id="sm_pithiness_score"
+          type="text"
+          maxlength="1"
+          style="
+            width: 10px;
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: red;
+          "
+          onClick="sm_rate_summary_clear(this);sm_select_count(this);"
+          onKeyPress="return sm_count_process(event);"
+          onKeyUp="sm_rate_summary_clear(this);"
+          onmouseover="sm_rate_summary_info_add('sm_pithiness_score', this)"
+          onmouseout="sm_rate_summary_info_remove()"
+        /><span
+          style="
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+          "
+          >&nbsp;/5</span
+        >&nbsp;&nbsp;<span
+          style="
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+          "
+          >CLARITY</span
+        >&nbsp;<input
+          id="sm_clarity_score"
+          type="text"
+          maxlength="1"
+          style="
+            width: 10px;
+            outline-style: solid;
+            outline-width: 0px;
+            outline-color: red;
+          "
+          onClick="sm_rate_summary_clear(this);sm_select_count(this);"
+          onKeyPress="return sm_count_process(event);"
+          onKeyUp="sm_rate_summary_clear(this);"
+          onmouseover="sm_rate_summary_info_add('sm_clarity_score', this)"
+          onmouseout="sm_rate_summary_info_remove()"
+        /><span
+          style="
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+          "
+          >&nbsp;/5</span
+        >&nbsp;&nbsp;<span
+          style="
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+          "
+          >ERROR(S)</span
+        ><input
+          id="sm_error_score"
+          type="checkbox"
+          onmouseover="sm_rate_summary_info_add('sm_error_score', this)"
+          onmouseout="sm_rate_summary_info_remove()"
+        />&nbsp;&nbsp;<input
+          id="sm_rate_clear"
+          onmouseover="this.style.cursor = 'pointer'"
+          style="
+            position: relative;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #f2ec43;
+            border-color: #bfba35;
+            right: 0px;
+            width: 75px;
+            height: 28px;
+            z-index: 20;
+            color: rgb(33, 33, 33);
+          "
+          value="CANCEL"
+          type="button"
+          onClick="sm_recovery_remove('sm_rate_summary_remove()');sm_rate_summary_remove();"
+        />&nbsp;<input
+          id="sm_rate_submit"
+          onmouseover="this.style.cursor = 'pointer'"
+          style="
+            position: relative;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #1c7bff;
+            border-color: #1968d6;
+            left: 0px;
+            width: 60px;
+            height: 28px;
+            z-index: 20;
+            color: #fff;
+          "
+          value="RATE"
+          type="button"
+          onClick="sm_recovery_remove('sm_rate_summary_remove()');sm_rate_summary_process();"
+        />
+      </div>
+      <div
+        id="sm_feedback_container"
+        style="
+          display: none;
+          font-family: Verdana, Arial, Helvetica, sans-serif;
+          font-size: 18px;
+          font-weight: bold;
+        "
+      >
+        Thank you for your feedback.
+      </div>
+    </div>
+    <div
+      align="left"
+      id="sm_settings_float"
+      style="
+        display: none;
+        position: absolute;
+        left: 50%;
+        margin-left: -350px;
+        top: 0px;
+        z-index: 1000;
+      "
+    >
+      <div
+        style="
+          position: relative;
+          top: -5px;
+          width: 200px;
+          background-color: #f2ec43;
+          border-style: solid;
+          border-width: 2px;
+          border-color: #bfba35;
+          padding: 5px;
+        "
+      >
+        <div
+          align="center"
+          style="
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+          "
+        >
+          SETTINGS
+        </div>
+        <input
+          id="sm_check_question_avoid_visual"
+          name="sm_check_question_avoid_visual"
+          type="checkbox"
+          onclick="sm_resummarize_process(0)"
+        /><span style="position: relative; left: 3px">Avoid Questions</span
+        ><span
+          id="sm_tip_question_avoid"
+          style="
+            position: relative;
+            left: 3px;
+            vertical-align: super;
+            font-size: 10px;
+            color: #595856;
+          "
+          onmouseover="this.style.cursor = 'pointer';sm_tip_add(this);"
+          onmouseout="sm_tip_remove(this);"
+          >&nbsp;[?]</span
+        ><br /><input
+          id="sm_check_exclamation_avoid_visual"
+          name="sm_check_exclamation_avoid_visual"
+          type="checkbox"
+          onClick="sm_resummarize_process(0)"
+        /><span style="position: relative; left: 3px">Avoid Exclamations</span
+        ><span
+          id="sm_tip_exclamation_avoid"
+          style="
+            position: relative;
+            left: 3px;
+            vertical-align: super;
+            font-size: 10px;
+            color: #595856;
+          "
+          onmouseover="this.style.cursor = 'pointer';sm_tip_add(this);"
+          onmouseout="sm_tip_remove(this);"
+          >&nbsp;[?]</span
+        ><br /><input
+          id="sm_check_quote_avoid_visual"
+          name="sm_check_quote_avoid_visual"
+          type="checkbox"
+          onClick="sm_resummarize_process(0)"
+        /><span style="position: relative; left: 3px">Avoid Quotations</span
+        ><span
+          id="sm_tip_quotation_avoid"
+          style="
+            position: relative;
+            left: 3px;
+            vertical-align: super;
+            font-size: 10px;
+            color: #595856;
+          "
+          onmouseover="this.style.cursor = 'pointer';sm_tip_add(this);"
+          onmouseout="sm_tip_remove(this);"
+          >&nbsp;[?]</span
+        ><br /><input
+          id="sm_check_heat_map_visual"
+          name="sm_check_heat_map_visual"
+          type="checkbox"
+          onclick="sm_resummarize_process(0)"
+        /><span style="position: relative; left: 3px">Heat Map</span
+        ><span
+          id="sm_tip_heat_map"
+          style="
+            position: relative;
+            left: 3px;
+            vertical-align: super;
+            font-size: 10px;
+            color: #595856;
+          "
+          onmouseover="this.style.cursor = 'pointer';sm_tip_add(this);"
+          onmouseout="sm_tip_remove(this);"
+          >&nbsp;[?]</span
+        ><br /><input
+          id="sm_check_quick_transitions_visual"
+          name="sm_check_quick_transitions_visual"
+          type="checkbox"
+          onclick="sm_quick_transitions_toggle()"
+        /><span style="position: relative; left: 3px">Quick Transitions</span
+        ><span
+          id="sm_tip_quick_transitions"
+          style="
+            position: relative;
+            left: 3px;
+            vertical-align: super;
+            font-size: 10px;
+            color: #595856;
+          "
+          onmouseover="this.style.cursor = 'pointer';sm_tip_add(this);"
+          onmouseout="sm_tip_remove(this);"
+          >&nbsp;[?]</span
+        ><br /><input
+          id="sm_check_specify_topic_visual"
+          name="sm_check_specify_topic_visual"
+          type="checkbox"
+          onclick="sm_specify_topic_toggle()"
+        /><span style="position: relative; left: 3px">Specify Topic</span
+        ><span
+          id="sm_tip_specify_topic"
+          style="
+            position: relative;
+            left: 3px;
+            vertical-align: super;
+            font-size: 10px;
+            color: #595856;
+          "
+          onmouseover="this.style.cursor = 'pointer';sm_tip_add(this);"
+          onmouseout="sm_tip_remove(this);"
+          >&nbsp;[?]</span
+        ><br /><input
+          id="sm_check_save_settings_visual"
+          name="sm_check_save_settings_visual"
+          type="checkbox"
+          onclick="sm_user_validate('sm_resummarize_process(1)', 'sm_settings_save_fail()', false, 1);"
+        /><span style="position: relative; left: 3px">Remember Settings</span
+        ><span
+          id="sm_tip_remember_settings"
+          style="vertical-align: super; font-size: 10px; color: #595856"
+          onmouseover="this.style.cursor = 'pointer';sm_tip_add(this);"
+          onmouseout="sm_tip_remove(this);"
+          >&nbsp;[?]</span
+        >
+      </div>
+      <input
+        id="sm_rate_clear"
+        onmouseover="this.style.cursor = 'pointer'"
+        style="
+          position: relative;
+          left: 8px;
+          font-family: Verdana, Arial, Helvetica, sans-serif;
+          font-size: 14px;
+          font-weight: bold;
+          background-color: #f2ec43;
+          border-color: #bfba35;
+          width: 160px;
+          height: 28px;
+          z-index: 20;
+          color: rgb(33, 33, 33);
+        "
+        value="CLOSE"
+        type="button"
+        onClick="sm_settings_remove();"
+      />
+    </div>
+    <div
+      id="sm_rate_summary_info_container"
+      style="
+        display: none;
+        position: absolute;
+        top: 0px;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        width: 300px;
+        background-color: #fff;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #000;
+        padding: 5px;
+      "
+    ></div>
+    <div
+      id="sm_flash_warning_container"
+      style="
+        display: none;
+        position: absolute;
+        top: 0px;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #cccc00;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #000;
+        padding: 5px;
+        z-index: 9990;
+      "
+    >
+      You cannot select more than 5 keywords
+    </div>
+    <div
+      id="sm_flash_info_container"
+      style="
+        display: none;
+        position: absolute;
+        top: 0px;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #ead9ff;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #000;
+        padding: 5px;
+      "
+    >
+      Not a significant keyword
+    </div>
+    <img
+      id="sm_flashbar_pointer"
+      style="
+        display: none;
+        position: absolute;
+        left: 50%;
+        margin-left: -345px;
+        z-index: 9000;
+      "
+      src="https://smmry.com/sm_images/sm_flashbar_pointer.png"
+    /><img
+      id="sm_flashbar_pointer_red"
+      style="
+        display: none;
+        position: absolute;
+        left: 50%;
+        margin-left: -345px;
+        z-index: 9009;
+      "
+      src="https://smmry.com/sm_images/sm_flashbar_pointer_red.png"
+    />
+    <div
+      id="sm_flashbar_box_undercast"
+      style="
+        display: none;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        position: absolute;
+        background-color: #666;
+        left: 50%;
+        margin-left: -341px;
+        width: 552px;
+        border: solid;
+        border-width: 2px;
+        border-color: #666;
+        z-index: 9000;
+      "
+    ></div>
+    <div
+      id="sm_flashbar_box"
+      style="
+        display: none;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        position: absolute;
+        left: 50%;
+        margin-left: -341px;
+        width: 552px;
+        z-index: 9900;
+      "
+    ></div>
+    <div
+      id="sm_tip_container"
+      style="
+        display: none;
+        position: absolute;
+        width: 200px;
+        background-color: #ead9ff;
+        border: solid;
+        border-width: 2px;
+        border-color: #bdafce;
+        padding: 5px;
+        z-index: 9990;
+      "
+    ></div>
+    <div
+      id="sm_loading_notice"
+      style="
+        display: none;
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        background-color: #cf0;
+        padding: 5px;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+      "
+    >
+      LOADING...
+    </div>
+    <div
+      id="sm_footer_container"
+      align="center"
+      style="position: relative; top: 16px"
+    >
+      <div
+        align="center"
+        style="
+          position: relative;
+          top: 0px;
+          font-family: Verdana, Arial, Helvetica, sans-serif;
+          font-size: 12px;
+        "
+      >
+        <br /><a class="sm_footer_nav_home" href="https://smmry.com"
+          >SUMMARIZE</a
+        >|<a class="sm_footer_nav_main">ABOUT</a>|<a class="sm_footer_nav_main"
+          >API</a
+        >|<a class="sm_footer_nav_main" href="https://smmry.com/partner"
+          >PARTNER</a
+        >|<a class="sm_footer_nav_main" href="https://smmry.com/bookmark"
+          >BOOKMARK WIDGET</a
+        >|<a class="sm_footer_nav_main" href="https://smmry.com/contact"
+          >CONTACT</a
+        ><span id="sm_footer_user_part" style="display: block; margin-top: 10px"
+          ><span
+            class="sm_footer_nav_register"
+            onclick="sm_register_launch();"
+            onmouseover="this.style.cursor = 'pointer'"
+            ><b>REGISTER</b></span
+          >|<span
+            class="sm_footer_nav_login"
+            onclick="sm_login_launch();"
+            onmouseover="this.style.cursor = 'pointer'"
+            ><b>LOGIN</b></span
+          ></span
+        ><br /><span
+          href="#"
+          style="font-size: 8px; color: #000; text-decoration: none"
+          >&copy; 2019</span
+        >
+        <a style="font-size: 8px; color: #000; text-decoration: none"
+          >Smmry.com</a
+        >
+      </div>
+      <br />
+    </div>
+    <script
+      type="text/javascript"
+      src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57f2616c9c53a3e2"
+    ></script>
+  </body>
+</html>
