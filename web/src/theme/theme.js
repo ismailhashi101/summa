@@ -77,6 +77,16 @@ const lightMuiTheme = createMuiTheme({
     },
   },
   overrides: {
+    MuiContainer: {
+      root: {
+        display: "flex",
+        justifyContent: "center",
+        flexFlow: "wrap",
+      },
+      maxWidthLg:{
+        maxWidth: "-webkit-fill-available"
+      }
+    },
     MuiInputBase: {
       root: {
         fontSize: "21px",
@@ -98,34 +108,6 @@ const lightMuiTheme = createMuiTheme({
         ...fontFamilyMetropolis,
         fontWeight: 500,
         fontSize: "0.87rem",
-      },
-    },
-    MuiPickersBasePicker: {
-      pickerView: {
-        display: "flex",
-        maxWidth: "280px",
-        minWidth: "280px",
-        paddingLeft: "2px",
-        minHeight: "305px",
-        marginTop: "-8px",
-        marginLeft: "5px",
-      },
-      containerLandscape: {
-        flexDirection: "column",
-        display: "flex",
-      },
-    },
-    MuiPickersToolbar: {
-      toolbar: {
-        height: "90px",
-      },
-      toolbarLandscape: {
-        maxWidth: "none",
-      },
-    },
-    MuiPickersStaticWrapper: {
-      staticWrapperRoot: {
-        minWidth: "275px",
       },
     },
   },

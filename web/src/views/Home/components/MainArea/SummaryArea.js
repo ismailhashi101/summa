@@ -9,7 +9,9 @@ const useStyles = makeStyles((theme) => ({
     align: "center",
     display: "block",
     position: "relative",
-    top: "75px",
+    top: "100px",
+    paddingTop: "1%",
+    margin: "2%",
   },
   summaryBox: {
     padding: theme.spacing(3, 0, 0),
@@ -17,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   searchbarContainer: {
     flex: 1,
-    maxWidth: theme.spacing(85),
-    maxHeight: theme.spacing(85),
+    maxWidth: theme.spacing(100),
     margin: "0 auto",
   },
   summaryTitle: {
@@ -62,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     margin: "0 auto",
     marginLeft: "0px",
+    marginRight: "15px",
     flexFlow: "row wrap",
   },
   buttonContainer: {

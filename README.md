@@ -61,6 +61,4 @@ You can also us it as an API by starting the prod version and making post reques
 * correct: true / false
 * translation: none / french / spanish / german
 
-Please don't hesitate to contribute by doing a PR or by donating!
-
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J3U6LA)
+Please don't hesitate to contribute by doing a PR!

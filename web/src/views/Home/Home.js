@@ -7,7 +7,6 @@ import { dark, light } from "../../theme/theme";
 import axios from "axios";
 import SummaryArea from "./components/MainArea/SummaryArea";
 import SummaryResults from "./components/MainArea/SummaryResults";
-import Footer from "./Footer";
 
 export default function ({ navigate }) {
   const [data, setData] = useState([]);
@@ -221,27 +220,19 @@ export default function ({ navigate }) {
   }, []);
 
   if (data) {
-    return <Home todos={data} />;
+    return <Home results={data} />;
   }
 }
 
-function Home({ todos }) {
+function Home({ data }) {
   return (
-    <React.Fragment>
-      <ThemeProvider theme={light}>
-        <CssBaseline />
-        <AppBar />
-        <Container>
-          <Box mt={8}>
-            <SummaryArea />
-            <SummaryResults />
-          </Box>
-        </Container>
-        <Footer
-          title="Footer"
-          description="Something here to give the footer a purpose!"
-        />
-      </ThemeProvider>
-    </React.Fragment>
+    <ThemeProvider theme={light}>
+      <CssBaseline />
+      <AppBar />
+      <Container maxWidth={false}>
+        <SummaryArea />
+        <SummaryResults results={data}/>
+      </Container>
+    </ThemeProvider>
   );
 }

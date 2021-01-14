@@ -4,24 +4,27 @@ import { List, Typography } from "@material-ui/core";
 import SummaryCard from "./SummaryCard";
 
 const useStyles = makeStyles((theme) => ({
-    content: {
+  content: {
     align: "center",
     display: "block",
     position: "relative",
     top: "100px",
+    paddingTop: "1%",
     flex: 1,
-    maxWidth: theme.spacing(85),
-    maxHeight: theme.spacing(85),
-    margin: "0 auto",
+    margin: "2%",
+    maxWidth: theme.spacing(90),
+    minWidth: theme.spacing(60),
     backgroundColor: theme.palette.background.paper,
   },
+  noContent: {
+    display: "none"
+  },
   summaryResults: {
-    paddingTop: "40px",
-    paddingBottom: "25px",
+    paddingBottom: "20px",
     fontFamily: "Verdana, Arial, Helvetica, sans-serif",
   },
   root: {
-    width: "-webkit-fill-available"
+    width: "-webkit-fill-available",
   },
   bullet: {
     display: "inline-block",
@@ -33,23 +36,24 @@ const useStyles = makeStyles((theme) => ({
   },
   pos: {
     marginBottom: 22,
-  }
+  },
 }));
 
-export default function () {
+export default function ({ results }) {
   const classes = useStyles();
+  results = true;
 
   return (
-    <div className={classes.content}>
+    <div className={results ? classes.content : classes.noContent }>
       <div className={classes.summaryResults}>
         <Typography variant="h4" gutterBottom>
           Summary Results
         </Typography>
       </div>
       <div className={classes.root}>
-          <SummaryCard />
-          <SummaryCard />
-          <SummaryCard />
+        <SummaryCard />
+        <SummaryCard />
+        <SummaryCard />
       </div>
     </div>
   );

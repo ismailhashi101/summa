@@ -19,7 +19,7 @@ export default function App() {
   return (
     <ThemeProvider theme={light}>
       <CssBaseline />
-      <Home path="/home" />
+      <Home path="/" />
     </ThemeProvider>
   );
 }
