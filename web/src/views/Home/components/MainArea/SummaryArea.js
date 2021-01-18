@@ -6,20 +6,15 @@ import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles((theme) => ({
   content: {
-    align: "center",
     display: "block",
     position: "relative",
-    top: "100px",
+    top: "90px",
     paddingTop: "1%",
     margin: "2%",
+    maxWidth: theme.spacing(100),
   },
   summaryBox: {
     padding: theme.spacing(3, 0, 0),
-    margin: "0 auto",
-  },
-  searchbarContainer: {
-    flex: 1,
-    maxWidth: theme.spacing(100),
     margin: "0 auto",
   },
   summaryTitle: {
@@ -75,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: "5px",
   },
   input: {
-    display: "none",
+    display: "flex",
   },
   summarizeButton: {
     fontFamily: "Verdana, Arial, Helvetica, sans-serif",
@@ -93,61 +88,59 @@ export default function () {
 
   return (
     <div className={classes.content}>
-      <div className={classes.searchbarContainer}>
-        <div className={classes.summaryTitle}>
-          <span className={classes.title}>
-            Summarize my text in &nbsp;
-            <input
-              className={classes.titleInput}
-              type="text"
-              autocomplete="off"
-              maxlength="2"
-              value="7"
-            />
-            &nbsp; sentences.
-          </span>
-        </div>
-        <div className={classes.summaryBox}>
-          <SummaryBox ml={8} />
-        </div>
-        <div className={classes.root}>
-          <div className={classes.summaryInput}>
-            <form noValidate autoComplete="off">
-              <TextField
-                className={classes.uploadContainer}
-                label="Upload"
-                variant="outlined"
-                color="secondary"
-                placeholder="Upload a File!"
-                margin="dense"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </form>
-            <form noValidate autoComplete="off">
-              <TextField
-                label="URL"
-                variant="outlined"
-                color="secondary"
-                placeholder="Paste a URL!"
-                margin="dense"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </form>
-          </div>
-          <div className={classes.buttonContainer}>
-            <Button
-              variant="contained"
-              size="large"
+      <div className={classes.summaryTitle}>
+        <span className={classes.title}>
+          Summarize my text in &nbsp;
+          <input
+            className={classes.titleInput}
+            type="text"
+            autocomplete="off"
+            maxlength="2"
+            value="7"
+          />
+          &nbsp; sentences.
+        </span>
+      </div>
+      <div className={classes.summaryBox}>
+        <SummaryBox ml={8} />
+      </div>
+      <div className={classes.root}>
+        <div className={classes.summaryInput}>
+          <form noValidate autoComplete="off">
+            <TextField
+              className={classes.uploadContainer}
+              label="Upload"
+              variant="outlined"
               color="secondary"
-              className={classes.summarizeButton}
-            >
-              Summarize
-            </Button>
-          </div>
+              placeholder="Upload a File!"
+              margin="dense"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </form>
+          <form noValidate autoComplete="off">
+            <TextField
+              label="URL"
+              variant="outlined"
+              color="secondary"
+              placeholder="Paste a URL!"
+              margin="dense"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+          </form>
+        </div>
+        <div className={classes.buttonContainer}>
+          <Button
+            variant="contained"
+            size="large"
+            color="secondary"
+            className={classes.summarizeButton}
+          >
+            Summarize
+          </Button>
         </div>
       </div>
     </div>

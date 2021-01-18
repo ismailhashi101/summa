@@ -9,12 +9,10 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     position: "relative",
     top: "100px",
-    paddingTop: "1%",
-    flex: 1,
+    paddingTop: "0.5%",
+    paddingBottom: "3%",
     margin: "2%",
     maxWidth: theme.spacing(90),
-    minWidth: theme.spacing(60),
-    backgroundColor: theme.palette.background.paper,
   },
   noContent: {
     display: "none"

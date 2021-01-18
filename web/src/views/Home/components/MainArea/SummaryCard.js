@@ -46,15 +46,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const mainFeaturedPost = {
-    title: 'Title of a longer featured blog post',
-    description:
-      "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-    image: 'https://source.unsplash.com/random',
-    imgText: 'main image description',
-    linkText: 'Continue reading…',
-  };
-
 export default function () {
   const classes = useStyles();
 
@@ -81,7 +72,7 @@ export default function () {
         </Typography>
       </CardContent>
       <CardActions className={classes.learnMore}>
-        <Button size="small">Learn More</Button>
+        <Button size="small">See More</Button>
       </CardActions>
     </Card>
   );

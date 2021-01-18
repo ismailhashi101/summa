@@ -82,9 +82,6 @@ const lightMuiTheme = createMuiTheme({
         display: "flex",
         justifyContent: "center",
         flexFlow: "wrap",
-      },
-      maxWidthLg:{
-        maxWidth: "-webkit-fill-available"
       }
     },
     MuiInputBase: {

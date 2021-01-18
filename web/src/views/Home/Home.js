@@ -231,7 +231,7 @@ function Home({ data }) {
       <AppBar />
       <Container maxWidth={false}>
         <SummaryArea />
-        <SummaryResults results={data}/>
+        <SummaryResults results={data} />
       </Container>
     </ThemeProvider>
   );
