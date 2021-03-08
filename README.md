@@ -1,15 +1,14 @@
 # Summa
 
-## Summarizes your articles, splitting the most important sentences and ranking a sentence based on importance.
+## Summa is a web app using NLP algorithms to automatically optimize and summarize your notes, and texts. Summa can summarize your articles, splitting the most important sentences and ranking a sentence based on importance.
 
-## Summa is a web app using advanced NLP algorithms to automatically optimize and summarize your notes, texts and courses. You can also use summa to correct, translate and export your essays to PDFs.
+![alt text](https://storage.googleapis.com/saasify-uploads-prod/ac31f12d58f9a5a894f83b2c800db04db26cd009.svg)
 
-<!-- //add logo.png to github -->
-<!-- <br>
+<br>
 <p align="center">
 <img src="logo.svg" height="100">
 </p>
-<br> -->
+<br>
 
 You can run the dev server by doing:
 
@@ -18,22 +17,24 @@ You can run the dev server by doing:
 
 # In the project directory, you can run:
 
-cd server
+$ cd server
 
 # Then activate the corresponding environment:
 
-python3 -m venv venv
-. venv/bin/activate
+$ python3 -m venv venv
+$ . venv/bin/activate
 
 # Install Flask
-## Within the activated environment, use the following command to install Flask:
+# Within the activated environment, use the following command to install Flask:
 
-pip install Flask
+$ pip install Flask
 
 # Flask is now installed.
 
-export FLASK_APP=app.py
-flask run
+$ export FLASK_APP=app.py
+$ flask run
+
+* Running on http://127.0.0.1:5000/
 ````
 
 You can run the dev client by doing:
@@ -43,14 +44,15 @@ You can run the dev client by doing:
 
 # In the project directory, you can run:
 
-cd client
+$ cd client
 
 # Install dependencies
 
-npm install
+$ npm install
 
 # Start client
-npm start
+
+$ npm start
 
 # Runs the app in the development mode.\
 # Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -58,11 +60,5 @@ npm start
 ````
 
 You can also us it as an API by starting the prod version and making post requests to [localhost:5000/api/](localhost:5000/api/) :
-
-#### Params:
-* text: string (required)
-* title: string (required)
-* correct: true / false
-* translation: none / french / spanish / german
 
 Please don't hesitate to contribute by doing a PR!
