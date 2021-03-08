@@ -1,12 +1,11 @@
 # Summa
 
-## Summa is a web app using NLP algorithms to automatically optimize and summarize your notes, and texts. Summa can summarize your articles, splitting the most important sentences and ranking a sentence based on importance.
+### Summa is a web app using NLP algorithms to automatically optimize and summarize your notes, and texts. Summa can summarize your articles, splitting the most important sentences and ranking a sentence based on importance.
 
-![alt text](https://storage.googleapis.com/saasify-uploads-prod/ac31f12d58f9a5a894f83b2c800db04db26cd009.svg)
 
 <br>
 <p align="center">
-<img src="logo.svg" height="100">
+![alt text](https://storage.googleapis.com/saasify-uploads-prod/ac31f12d58f9a5a894f83b2c800db04db26cd009.svg)
 </p>
 <br>
 
