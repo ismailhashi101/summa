@@ -3,11 +3,13 @@
 ### Summa is a web app using NLP algorithms to automatically optimize and summarize your notes, and texts. Summa can summarize your articles, splitting the most important sentences and ranking a sentence based on importance.
 
 
-<br>
-<p align="center">
 ![alt text](https://storage.googleapis.com/saasify-uploads-prod/ac31f12d58f9a5a894f83b2c800db04db26cd009.svg)
+
+<!-- <br>
+<p align="center">
+<img src="/docs/images/logo.svg" height="100">
 </p>
-<br>
+<br> -->
 
 You can run the dev server by doing:
 
