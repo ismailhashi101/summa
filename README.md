@@ -1,7 +1,5 @@
 # Summa
 
-## Automatically summarize any text!
-
 ## Summarizes your articles, splitting the most important sentences and ranking a sentence based on importance.
 
 ## Summa is a web app using advanced NLP algorithms to automatically optimize and summarize your notes, texts and courses. You can also use summa to correct, translate and export your essays to PDFs.
@@ -9,51 +7,57 @@
 <!-- //add logo.png to github -->
 <!-- <br>
 <p align="center">
-<img src="logo.png" height="100">
+<img src="logo.svg" height="100">
 </p>
 <br> -->
 
-You can run the dev version by doing:
+You can run the dev server by doing:
+
 ````bash
+# Before you work on your project, download the latest version of Python
+
+# In the project directory, you can run:
+
+cd server
+
+# Then activate the corresponding environment:
+
+python3 -m venv venv
+. venv/bin/activate
+
+# Install Flask
+## Within the activated environment, use the following command to install Flask:
+
+pip install Flask
+
+# Flask is now installed.
+
+export FLASK_APP=app.py
+flask run
+````
+
+You can run the dev client by doing:
+
+````bash
+# Before you work on your project, download the latest version of npm
+
+# In the project directory, you can run:
+
 cd client
 
 # Install dependencies
+
 npm install
 
-# Start dev server
-npm run serve
+# Start client
+npm start
 
-# Open another terminal window and do:
-
-# Go to server folder
-cd server
-
-# Start a pipenv shell
-pipenv shell
-
-# Install dependencies (using Pipenv)
-sudo pipenv install --skip-lock
-
-# Start server
-python main.py
+# Runs the app in the development mode.\
+# Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ````
 
-You can also run the prod version by doing:
-````bash
-cd server
-
-# Start a pipenv shell
-pipenv shell
-
-# Install dependencies (using Pipenv)
-sudo pipenv install --skip-lock
-
-# Start server
-python main.py
-
-````
-You can also us it as an API by starting the prod version and making post requests to [localhost:3000/api/](localhost:3000/api/) :
+You can also us it as an API by starting the prod version and making post requests to [localhost:5000/api/](localhost:5000/api/) :
 
 #### Params:
 * text: string (required)

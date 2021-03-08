@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "homepage": "./",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
@@ -15,14 +15,15 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
+    "react-scripts": "^4.0.1",
     "styled-components": "^5.2.1",
     "typography": "^0.16.19",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "server": "react-scripts cd ../server && . venv/bin/activate && flask run --no-debugger",
+    "start": "npm-run-all -p start-server start-client",
+    "start-client": "react-scripts start",
+    "start-server": "react-scripts cd ../server && . venv/bin/activate && flask run --no-debugger",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
