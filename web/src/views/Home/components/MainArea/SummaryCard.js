@@ -7,18 +7,6 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
-  content: {
-    align: "center",
-    display: "block",
-    position: "relative",
-    top: "100px",
-    bottom: "100px",
-    flex: 1,
-    maxWidth: theme.spacing(85),
-    maxHeight: theme.spacing(85),
-    margin: "0 auto",
-    backgroundColor: theme.palette.background.paper,
-  },
   cardContent: {
     paddingBottom: 5,
   },
@@ -32,18 +20,26 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: 16,
     marginBottom: 15,
-    fontFamily: "Verdana, Arial, Helvetica, sans-serif",
+    fontFamily:
+      "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+    fontWeight: 900,
+    letterSpacing: "0.015rem",
   },
   pos: {
     marginBottom: 12,
   },
   cardParagraph: {
     fontSize: 14.5,
-    fontFamily: "Verdana, Arial, Helvetica, sans-serif",
+    fontFamily:
+      "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+    letterSpacing: "0.015rem",
   },
-  learnMore:{
-    fontFamily: "Verdana, Arial, Helvetica, sans-serif",
-  }
+  learnMore: {
+    fontFamily:
+      "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+    fontWeight: 900,
+    letterSpacing: "0.015rem",
+  },
 }));
 
 export default function () {

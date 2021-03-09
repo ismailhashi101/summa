@@ -15,11 +15,17 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: theme.spacing(90),
   },
   noContent: {
-    display: "none"
+    display: "none",
   },
   summaryResults: {
     paddingBottom: "20px",
-    fontFamily: "Verdana, Arial, Helvetica, sans-serif",
+    fontFamily:
+      "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+    fontWeight: 900,
+    letterSpacing: "0.015rem",
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
   },
   root: {
     width: "-webkit-fill-available",
@@ -42,12 +48,10 @@ export default function ({ results }) {
   results = true;
 
   return (
-    <div className={results ? classes.content : classes.noContent }>
-      <div className={classes.summaryResults}>
-        <Typography variant="h4" gutterBottom>
-          Summary Results
-        </Typography>
-      </div>
+    <div className={results ? classes.content : classes.noContent}>
+      <Typography variant="h4" gutterBottom className={classes.summaryResults}>
+        Summary Results
+      </Typography>
       <div className={classes.root}>
         <SummaryCard />
         <SummaryCard />

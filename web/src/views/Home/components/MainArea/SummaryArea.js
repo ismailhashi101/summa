@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     position: "relative",
     top: "90px",
-    paddingTop: "1%",
+    paddingTop: "2%",
     margin: "2%",
     maxWidth: theme.spacing(100),
   },
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 auto",
   },
   title: {
-    fontFamily: "Verdana, Arial, Helvetica, sans-serif",
+    fontFamily: "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
     fontSize: "17px",
   },
   titleInput: {
@@ -73,10 +73,15 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   summarizeButton: {
-    fontFamily: "Verdana, Arial, Helvetica, sans-serif",
-    textTransform: "capitalize",
+    fontFamily: "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+    textTransform: "lowercase",
     fontWeight: 550,
     backgroundColor: "#aecbfaa6",
+    fontSize: "large",
+    letterSpacing: "0.015rem",
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
   },
   summaryResults: {
     paddingTop: "40px",
