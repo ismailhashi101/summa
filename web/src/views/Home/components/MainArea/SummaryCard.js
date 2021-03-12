@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -42,8 +42,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function () {
+export default function ({ summaryItem }) {
   const classes = useStyles();
+  const [title, setTitle] = useState(summaryItem.title);
+  const [summary, setSummary] = useState(summaryItem.summary);
+  // const [summaryDetails, setSummaryDetails] = useState(summaryItem.details);
+
+  //console.log("summary card ", summaryItem);
 
   return (
     <Card className={classes.root}>
@@ -54,17 +59,14 @@ export default function () {
           gutterBottom
           variant="h5"
         >
-          Title
+          {title}
         </Typography>
         <Typography
           variant="body1"
           component="p"
           className={classes.cardParagraph}
         >
-          summary adssa s das dasdasd as dasd as dasd dasdas das asd asd as dsad
-          asd adsadasds a asd as sa d sdsdsad sa asd asd asd asd asd asd as das
-          d sasds as das sa das asdasdasas asas dsd as asdasdsdsad as asd asd sa
-          dsa das ds asas sd sd as dsd s sa ds
+          {summary}
         </Typography>
       </CardContent>
       <CardActions className={classes.learnMore}>

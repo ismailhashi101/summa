@@ -27,7 +27,11 @@ const useStyles = makeStyles((theme) => ({
     ...theme.custom.fontFamily.metropolis,
     display: "flex",
     alignItems: "center",
+    fontSize: "1.875rem"
   },
+  toolbar: {
+    paddingLeft: "52px"
+  }
 }));
 
 export default function ResponsiveDrawer() {
@@ -45,7 +49,7 @@ export default function ResponsiveDrawer() {
         className={classes.containerBorder}
         position="fixed"
       >
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <LogoContainer />
         </Toolbar>
       </AppBar>

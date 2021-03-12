@@ -1,13 +1,14 @@
 from flask import Flask
+from flask_cors import CORS, cross_origin
 from app import summarizer
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def hello_world():
     return 'Hello, asfsss!'
-
 
 @app.route('/summarize')
 def summarize():
