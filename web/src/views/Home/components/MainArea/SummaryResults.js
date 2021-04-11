@@ -12,7 +12,9 @@ const useStyles = makeStyles((theme) => ({
     top: "100px",
     paddingTop: "0.5%",
     paddingBottom: "3%",
-    margin: "2%",
+    //margin: "2%",
+    marginTop: "2%",
+    marginBottom: "2%",
     maxWidth: theme.spacing(90),
   },
   noContent: {
@@ -53,26 +55,51 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const mockData = [
+  {
+    id: 1,
+    title: "test-1",
+    summary:
+      "Thousands of emails detail EPA head’s close ties to fossil fuel industry. I sent the letter today the deputy solicitor general wrote the following day. In one example, Pruitt was a speaker at an ALEC conference on May 3, 2013, in Oklahoma City. The group had sued to compel the state to release the documents under public records laws. Please let me know what you and General Pruitt think, or if we can help further. Pruitt’s chief of staff replied: Thanks Bill — we will take a look and start working on a draft. The emails’ release comes just days after Pruitt was confirmed as the EPA’s new leader. Republicans forged ahead anyway, and Pruitt was confirmed by a 52-to-46 vote. Pruitt’s office at EPA did not at once respond to a ask for comment on Wednesday. On Tuesday, Pruitt addressed EPA employees for the first time as their new boss.",
+  },
+  {
+    id: 2,
+    title: "test-2",
+    summary:
+      "Thousands of emails detail EPA head’s close ties to fossil fuel industry. I sent the letter today the deputy solicitor general wrote the following day. In one example, Pruitt was a speaker at an ALEC conference on May 3, 2013, in Oklahoma City. The group had sued to compel the state to release the documents under public records laws. Please let me know what you and General Pruitt think, or if we can help further. Pruitt’s chief of staff replied: Thanks Bill — we will take a look and start working on a draft. The emails’ release comes just days after Pruitt was confirmed as the EPA’s new leader. Republicans forged ahead anyway, and Pruitt was confirmed by a 52-to-46 vote. Pruitt’s office at EPA did not at once respond to a ask for comment on Wednesday. On Tuesday, Pruitt addressed EPA employees for the first time as their new boss.",
+  },
+  {
+    id: 3,
+    title: "test-3",
+    summary:
+      "Thousands of emails detail EPA head’s close ties to fossil fuel industry. I sent the letter today the deputy solicitor general wrote the following day. In one example, Pruitt was a speaker at an ALEC conference on May 3, 2013, in Oklahoma City. The group had sued to compel the state to release the documents under public records laws. Please let me know what you and General Pruitt think, or if we can help further. Pruitt’s chief of staff replied: Thanks Bill — we will take a look and start working on a draft. The emails’ release comes just days after Pruitt was confirmed as the EPA’s new leader. Republicans forged ahead anyway, and Pruitt was confirmed by a 52-to-46 vote. Pruitt’s office at EPA did not at once respond to a ask for comment on Wednesday. On Tuesday, Pruitt addressed EPA employees for the first time as their new boss.",
+  },
+];
+
 export default function () {
   const classes = useStyles();
-  const [summaryResults, setsummaryResults] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [summaryResults, setsummaryResults] = useState(mockData);
 
   useEffect(() => {
     let mounted = true;
 
-    const fetchData = () => {
+    const fetchSummaries = () => {
       axios
-        .get("http://localhost:5000/summarize")
+        .get("http://localhost:5000/summaries")
         .then((response) => {
           if (mounted) {
             console.log("We good", response.data);
             setsummaryResults(response.data);
+            setLoading(false);
           }
         })
         .catch(function (error) {
           if (error.response) {
             console.log(error.response.data);
             console.log(error.response.status);
+            setError(error);
           } else if (error.request) {
             // The request was made but no response was received
             console.log(error.request);
@@ -83,35 +110,15 @@ export default function () {
         });
     };
 
-    //fetchData();
+    //fetchSummaries();
 
     return () => {
       mounted = false;
     };
   }, []);
 
-  const mockData = [
-    {
-      id: 1,
-      title: "test-1",
-      summary: "summary-1",
-    },
-    {
-      id: 2,
-      title: "test-2",
-      summary: "summary-2",
-    },
-    {
-      id: 3,
-      title: "test-3",
-      summary: "summary-3",
-    },
-  ];
-
-  //setsummaryResults(mockData);
-
   // Convert array to JSX items
-  var summaries = mockData.map(function(summaryItem) {
+  var summaries = summaryResults.map(function (summaryItem) {
     return (
       <div key={summaryItem.id} className={classes.summaryCard}>
         <SummaryCard summaryItem={summaryItem} />
@@ -119,10 +126,8 @@ export default function () {
     );
   });
 
-  console.log("We good", mockData);
-
   return (
-    <div className={mockData ? classes.content : classes.noContent}>
+    <div className={summaryResults ? classes.content : classes.noContent}>
       <Typography variant="h4" gutterBottom className={classes.summaryResults}>
         Summary Results
       </Typography>

@@ -1,27 +1,50 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS, cross_origin
 from app import summarizer
-
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/')
-def hello_world():
-    return 'Hello, asfsss!'
+# @app.route('/summarize')
+# def summarizeText1():
+#     # new_quark = request.get_json()
+#     # quarks.append(new_quark)
+#     # return jsonify({'quarks' : quarks})
 
-@app.route('/summarize')
-def summarize():
-    summarizer.setup_environment()
-    articleURL = "https://www.washingtonpost.com/news/energy-environment/wp/2017/02/22/oklahoma-attorney-generals-office-releases-7500-pages-of-emails-between-scott-pruitt-and-fossil-fuel-industry/"
-    # body = 'Text body that you want to summarize with BERT'
-    # model = Summarizer()
-    # result = model(body, min_length=7)
-    # summarizedText = ''.join(result)
-    text = summarizer.getText(articleURL)
-    strippedText = summarizer.stripHtml(text)
-    result = summarizer.spacy_summarizer(strippedText)
-    return result
+
+#     summarizer.setup_environment()
+#     articleURL = "https://www.washingtonpost.com/news/energy-environment/wp/2017/02/22/oklahoma-attorney-generals-office-releases-7500-pages-of-emails-between-scott-pruitt-and-fossil-fuel-industry/"
+#     # body = 'Text body that you want to summarize with BERT'
+#     # model = Summarizer()
+#     # result = model(body, min_length=7)
+#     # summarizedText = ''.join(result)
+#     text = summarizer.getText(articleURL)
+#     strippedText = summarizer.stripHtml(text)
+#     result = summarizer.spacy_summarizer(strippedText)
+#     return result
+
+@app.route('/summarize', methods=['POST'])
+def summarizeText():
+    request_data = request.get_json()
+    print("python data: ", request_data)
+    return request_data
+
+    # summarizer.setup_environment()
+    # articleURL = "https://www.washingtonpost.com/news/energy-environment/wp/2017/02/22/oklahoma-attorney-generals-office-releases-7500-pages-of-emails-between-scott-pruitt-and-fossil-fuel-industry/"
+    # # body = 'Text body that you want to summarize with BERT'
+    # # model = Summarizer()
+    # # result = model(body, min_length=7)
+    # # summarizedText = ''.join(result)
+    # text = summarizer.getText(articleURL)
+    # strippedText = summarizer.stripHtml(text)
+    # result = summarizer.spacy_summarizer(strippedText)
+    # return result
+
+@app.route('/summaries',methods=['GET'])
+def getSummaries():
+    summaries = summarizer.getSummaries()
+    return summaries
+    
 
 # @app.route('/analyze',methods=['GET','POST'])
 # def analyze():

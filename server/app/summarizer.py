@@ -9,6 +9,7 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 from bs4 import BeautifulSoup
 
 nlp = spacy.load("en_core_web_sm")
+summaries = []
 
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
@@ -61,8 +62,7 @@ def nltk_summarizer(raw_text):
 
 
 	summary_sentences = heapq.nlargest(7, sentence_scores, key=sentence_scores.get)
-
-	summary = ' '.join(summary_sentences)  
+	summary = ' '.join(summary_sentences)   
 	return summary
 
 def spacy_summarizer(raw_docx):
@@ -102,3 +102,7 @@ def spacy_summarizer(raw_docx):
     final_sentences = [ w.text for w in summarized_sentences ]
     summary = ' '.join(final_sentences)
     return summary
+
+def getSummaries():
+    this.summaries = []
+    return summaries
