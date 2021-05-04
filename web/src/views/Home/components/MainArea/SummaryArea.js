@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { uuid } from 'uuidv4';
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 // import PublishIcon from "@material-ui/icons/Publish";
@@ -23,12 +22,9 @@ const useStyles = makeStyles((theme) => ({
     top: "90px",
     paddingTop: "2%",
     margin: "2%",
+    marginLeft: 0,
     maxWidth: theme.spacing(100),
     width: "600px",
-  },
-  summaryBox: {
-    padding: theme.spacing(3, 0, 0),
-    margin: "0 auto",
   },
   summaryTitle: {
     width: "max-content",
@@ -52,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     margin: 0,
     padding: 0,
+    paddingRight: "5px",
   },
   uploadFile: {
     position: "absolute",
@@ -73,9 +70,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     flexFlow: "row wrap",
-  },
-  uploadContainer: {
-    paddingRight: "5px",
   },
   summarizeButton: {
     fontFamily:
@@ -118,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function () {
+export default function SummaryArea() {
   const classes = useStyles();
   const [url, setUrl] = React.useState("");
   //const [selectedFile, setSelectedFile] = useState();
@@ -128,7 +122,6 @@ export default function () {
 
   const [summaryData, setSummaryData] = useState([
     {
-      id: uuid(),
       url: url,
       //selectedFile: selectedFile,
       summaryBox: summaryBox,
@@ -141,7 +134,6 @@ export default function () {
     setSummaryData([
       ...summaryData,
       {
-        id: uuid(),
         url: url,
         //selectedFile: selectedFile,
         summaryBox: summaryBox,
@@ -155,7 +147,6 @@ export default function () {
     setSummaryData([
       ...summaryData,
       {
-        id: uuid(),
         url: url,
         //selectedFile: selectedFile,
         summaryBox: event.target.value,
@@ -169,7 +160,6 @@ export default function () {
     setSummaryData([
       ...summaryData,
       {
-        id: uuid(),
         url: event.target.value,
         //selectedFile: selectedFile,
         summaryBox: summaryBox,
@@ -202,7 +192,6 @@ export default function () {
     setSummaryData([
       ...summaryData,
       {
-        id: uuid(),
         url: url,
         //selectedFile: selectedFile,
         summaryBox: summaryBox,
@@ -239,8 +228,8 @@ export default function () {
           <input
             className={classes.titleInput}
             type="text"
-            autocomplete="off"
-            maxlength="2"
+            autoComplete="off"
+            maxLength="2"
             value={sentences}
             onChange={handleSentences}
           />

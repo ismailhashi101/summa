@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles((theme) => ({
   cardContent: {
@@ -42,13 +41,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ({ summaryItem }) {
+export default function SummaryCard({ summaryItem }) {
   const classes = useStyles();
   const [title, setTitle] = useState(summaryItem.title);
-  const [summary, setSummary] = useState(summaryItem.summary);
-  // const [summaryDetails, setSummaryDetails] = useState(summaryItem.details);
-
-  //console.log("summary card ", summaryItem);
+  const [summary, setSummary] = useState(summaryItem.text);
+  //const [summaryDetails, setSummaryDetails] = useState(summaryItem.details);
+  
+  const handleTitle = (event) => {
+    setTitle(event.target.value);
+    setSummary([
+      ...summary,
+      {
+        title: event.target.value
+      },
+    ]);
+  };
 
   return (
     <Card className={classes.root}>
@@ -59,7 +66,17 @@ export default function ({ summaryItem }) {
           gutterBottom
           variant="h5"
         >
-          {title}
+            <TextField
+              value={title}
+              color="secondary"
+              //onChange={handleTitle}
+              placeholder="Title"
+              margin="dense"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+
         </Typography>
         <Typography
           variant="body1"
@@ -69,9 +86,6 @@ export default function ({ summaryItem }) {
           {summary}
         </Typography>
       </CardContent>
-      <CardActions className={classes.learnMore}>
-        <Button size="small">See More</Button>
-      </CardActions>
     </Card>
   );
 }

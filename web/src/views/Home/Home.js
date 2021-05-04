@@ -1,5 +1,5 @@
 import React from "react";
-import { CssBaseline, Box, Container } from "@material-ui/core";
+import { CssBaseline, Container } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import AppBar from "../../components/Appbar/AppBar";
 import { light } from "../../theme/theme";
@@ -7,7 +7,7 @@ import { light } from "../../theme/theme";
 import SummaryArea from "./components/MainArea/SummaryArea";
 import SummaryResults from "./components/MainArea/SummaryResults";
 
-export default function () {
+export default function Home() {
   return (
     <ThemeProvider theme={light}>
       <CssBaseline />
