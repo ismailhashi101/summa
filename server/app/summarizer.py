@@ -8,11 +8,11 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from bs4 import BeautifulSoup
 
-nlp = spacy.load("en_core_web_sm")
-summaries = []
-
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
+
+from uuid import uuid4
+
 
 def setup_environment():
     """Download required resources."""
@@ -66,6 +66,8 @@ def nltk_summarizer(raw_text):
 	return summary
 
 def spacy_summarizer(raw_docx):
+    nlp = spacy.load("en_core_web_sm")
+
     raw_text = raw_docx
     docx = nlp(raw_text)
     stopwords = list(STOP_WORDS)
@@ -103,6 +105,18 @@ def spacy_summarizer(raw_docx):
     summary = ' '.join(final_sentences)
     return summary
 
+summaries = []
+def addSummary(summaryData):
+    summaries.append(summaryData)
+
+def getSummary(articleURL, summaryResult, sentences):
+    summaryData = {
+        'id': str(uuid4()), 
+        'text': summaryResult,
+        'url': articleURL,
+        'sentences': sentences
+        }
+    return summaryData
+
 def getSummaries():
-    this.summaries = []
     return summaries

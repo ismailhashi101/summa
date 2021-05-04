@@ -1,49 +1,42 @@
-from flask import Flask, request
+import json
+from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from app import summarizer
 
 app = Flask(__name__)
 CORS(app)
 
-# @app.route('/summarize')
-# def summarizeText1():
-#     # new_quark = request.get_json()
-#     # quarks.append(new_quark)
-#     # return jsonify({'quarks' : quarks})
-
-
-#     summarizer.setup_environment()
-#     articleURL = "https://www.washingtonpost.com/news/energy-environment/wp/2017/02/22/oklahoma-attorney-generals-office-releases-7500-pages-of-emails-between-scott-pruitt-and-fossil-fuel-industry/"
-#     # body = 'Text body that you want to summarize with BERT'
-#     # model = Summarizer()
-#     # result = model(body, min_length=7)
-#     # summarizedText = ''.join(result)
-#     text = summarizer.getText(articleURL)
-#     strippedText = summarizer.stripHtml(text)
-#     result = summarizer.spacy_summarizer(strippedText)
-#     return result
+# summarizer.setup_environment()
 
 @app.route('/summarize', methods=['POST'])
 def summarizeText():
-    request_data = request.get_json()
-    print("python data: ", request_data)
-    return request_data
+    requestData = request.get_json()
+    data = requestData['summary']
+    summary = data[len(data) - 1]
 
-    # summarizer.setup_environment()
-    # articleURL = "https://www.washingtonpost.com/news/energy-environment/wp/2017/02/22/oklahoma-attorney-generals-office-releases-7500-pages-of-emails-between-scott-pruitt-and-fossil-fuel-industry/"
-    # # body = 'Text body that you want to summarize with BERT'
-    # # model = Summarizer()
-    # # result = model(body, min_length=7)
-    # # summarizedText = ''.join(result)
-    # text = summarizer.getText(articleURL)
-    # strippedText = summarizer.stripHtml(text)
-    # result = summarizer.spacy_summarizer(strippedText)
-    # return result
+    articleURL = summary['url']
+    textBody = summary['summaryBox']
+    sentences = summary['sentences']
 
-@app.route('/summaries',methods=['GET'])
+    if(articleURL):
+        text = summarizer.getText(articleURL)
+        strippedText = summarizer.stripHtml(text)
+
+    if(textBody): 
+        summaryText = textBody
+    else:
+        summaryText = strippedText
+
+    summaryResult = summarizer.spacy_summarizer(summaryText)
+    summary = summarizer.getSummary(articleURL, summaryResult, sentences)
+    summarizer.addSummary(summary)
+
+    return jsonify(summary)
+
+@app.route('/summaries', methods=['GET'])
 def getSummaries():
     summaries = summarizer.getSummaries()
-    return summaries
+    return jsonify(summaries)
     
 
 # @app.route('/analyze',methods=['GET','POST'])
@@ -81,7 +74,7 @@ if __name__ == "__main__":
 #Paste an article, text or essay in this box and hit summarize; we'll return a shortened copy for you to read.
 #You can also summarize PDF and TXT documents by uploading a file or summarize online articles and webpages by pasting the URL below...
 
-
+# https://www.washingtonpost.com/news/energy-environment/wp/2017/02/22/oklahoma-attorney-generals-office-releases-7500-pages-of-emails-between-scott-pruitt-and-fossil-fuel-industry/
 # [
 #   "Thousands of emails detail EPA head’s close ties to fossil fuel industry",
 #   "“I sent the letter today,” the deputy solicitor general wrote the following day.",
