@@ -23,12 +23,13 @@ const useStyles = makeStyles((theme) => ({
   summaryResults: {
     paddingBottom: "20px",
     fontFamily:
-      "ProximaNova, Arial, Helvetica, sans-serif",
-    fontWeight: 600,
+      "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+    fontWeight: 400,
     display: "flex",
     width: "100%",
     alignItems: "center",
     fontSize: "35px",
+    letterSpacing: "0.015rem"
   },
   summaryCard: {
     width: "-webkit-fill-available",

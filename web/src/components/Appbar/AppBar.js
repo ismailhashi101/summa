@@ -4,7 +4,6 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  useScrollTrigger,
 } from "@material-ui/core";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,12 +11,7 @@ import BookIcon from "@material-ui/icons/Book";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-  },
-  containerBorder: {
-    borderBottomStyle: "solid",
-    borderBottomWidth: "1px",
-    borderBottomColor: theme.palette.divider,
+    display: "content",
   },
   logoContainer: {
     display: "flex",
@@ -29,26 +23,24 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     fontSize: "1.875rem"
   },
+  appbar: {
+    position: "absolute"
+  },
   toolbar: {
-   position: "absolute",
-   minHeight: "64px"
+   minHeight: "90px",
+   paddingLeft: "40px"
   }
 }));
 
 export default function ResponsiveDrawer() {
   const classes = useStyles();
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-  });
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
+      <AppBar 
         elevation={0}
-        className={classes.containerBorder}
-        position="fixed"
+        position="absolute"
       >
         <Toolbar className={classes.toolbar}>
           <LogoContainer />

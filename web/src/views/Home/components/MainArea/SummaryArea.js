@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 // import PublishIcon from "@material-ui/icons/Publish";
 // import IconButton from "@material-ui/core/IconButton";
 // import InputAdornment from "@material-ui/core/InputAdornment";
@@ -20,11 +22,11 @@ const useStyles = makeStyles((theme) => ({
     display: "block",
     position: "relative",
     top: "90px",
-    paddingTop: "2%",
     margin: "2%",
     marginLeft: 0,
-    maxWidth: theme.spacing(100),
+    maxWidth: theme.spacing(200),
     width: "600px",
+    paddingTop: "2%",
   },
   summaryTitle: {
     width: "max-content",
@@ -307,6 +309,7 @@ export default function SummaryArea() {
             />
           </form>
         </div>
+        <CircularProgress color="secondary" />
         <div className={classes.buttonContainer}>
           <Button
             onClick={summarizeArticle}
