@@ -1,26 +1,22 @@
 # summa
 
+<br>
 <p align="center">
-<img src="https://storage.googleapis.com/saasify-uploads-prod/ac31f12d58f9a5a894f83b2c800db04db26cd009.svg" width="525" />
+<img src="/docs/images/notes.svg" height="100" width="325">
 </p>
+<br>
 
 
 
+> summa was created to summarize webpages, articles and text.
 
-> summa uses AI to summarize webpages, articles and text!
+summa's uses natural language processing to provide an consice way to understanding text by:
 
-- uses natural language processing to summarize text
-- uses a variety of techniques to find the core message of a text and extractive text summaries
-- summa splits the most important sentences and ranks them based on importance
+- reducing the text to only the most important sentences.
+- uses a variety of techniques to find the core message of a text and extractive text summaries.
+- summa splits the most important sentences and ranks them based on importance.
 
 
-<!-- ![alt text](https://storage.googleapis.com/saasify-uploads-prod/ac31f12d58f9a5a894f83b2c800db04db26cd009.svg) -->
-
-<!-- <br>
-<p align="center">
-<img src="/docs/images/logo.svg" height="100">
-</p>
-<br> -->
 
 ## Getting started
 
