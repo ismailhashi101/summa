@@ -46,16 +46,18 @@ export default function SummaryCard({ summaryItem }) {
   const [title, setTitle] = useState(summaryItem.title);
   const [summary, setSummary] = useState(summaryItem.text);
   //const [summaryDetails, setSummaryDetails] = useState(summaryItem.details);
-  
+
   const handleTitle = (event) => {
     setTitle(event.target.value);
     setSummary([
       ...summary,
       {
-        title: event.target.value
+        title: event.target.value,
       },
     ]);
   };
+
+  const onChangeTitle = (event) => setTitle(event.target.value);
 
   return (
     <Card className={classes.root}>
@@ -66,17 +68,16 @@ export default function SummaryCard({ summaryItem }) {
           gutterBottom
           variant="h5"
         >
-            <TextField
-              value={title}
-              color="secondary"
-              //onChange={handleTitle}
-              placeholder="Title"
-              margin="dense"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-
+          <TextField
+            value={title}
+            color="secondary"
+            //onChange={handleTitle}
+            placeholder="Title"
+            margin="dense"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
         </Typography>
         <Typography
           variant="body1"

@@ -24,13 +24,11 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "20px",
     fontFamily:
       "ProximaNova, Arial, Helvetica, sans-serif",
-    fontWeight: 900,
+    fontWeight: 600,
     display: "flex",
     width: "100%",
     alignItems: "center",
-
     fontSize: "35px",
-    lineHeight: "50px"
   },
   summaryCard: {
     width: "-webkit-fill-available",

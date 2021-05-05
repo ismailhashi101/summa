@@ -82,6 +82,8 @@ const lightMuiTheme = createMuiTheme({
         display: "flex",
         justifyContent: "center",
         flexFlow: "wrap",
+        paddingLeft: "26px",
+        paddingRight: "26px"
       }
     },
     MuiInputBase: {

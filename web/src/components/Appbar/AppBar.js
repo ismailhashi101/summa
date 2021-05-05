@@ -30,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.875rem"
   },
   toolbar: {
-    paddingLeft: "52px"
+   position: "absolute",
+   minHeight: "64px"
   }
 }));
 
@@ -45,7 +46,7 @@ export default function ResponsiveDrawer() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        elevation={trigger ? 4 : 0}
+        elevation={0}
         className={classes.containerBorder}
         position="fixed"
       >
