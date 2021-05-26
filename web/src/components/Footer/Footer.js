@@ -5,7 +5,7 @@ import BookIcon from "@material-ui/icons/Book";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: 'calc(5% + 75px)',
+    marginTop: 'calc(18% + 75px)',
     bottom: 0,
   },
   logoContainer: {

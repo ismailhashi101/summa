@@ -1,19 +1,23 @@
-import * as types from "../constants/ActionTypes";
+import * as types from "../store/constants/ActionTypes";
 
-export const addSummary = () => (dispatch) =>
-  dispatch({
-    type: types.ADD_SUMMARY,
+export const addSummary = (id, title, text) => ({
+  type: types.ADD_SUMMARY,
+  payload: {
+    id,
+    title,
     text,
-  });
+  },
+});
 
-export const deleteSummary = () => (dispatch) =>
-  dispatch({
-    type: types.DELETE_SUMMARY,
-    id,
-  });
+export const deleteSummary = (id) => ({
+  type: types.DELETE_SUMMARY,
+  payload: { id },
+});
 
-export const editSummary = () => (dispatch) =>
-  dispatch({
-    type: types.EDIT_SUMMARY_TITLE,
+export const editSummary = (id, title) => ({
+  type: types.EDIT_SUMMARY_TITLE,
+  payload: {
     id,
-  });
+    title,
+  },
+});

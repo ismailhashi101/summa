@@ -77,18 +77,27 @@ const lightMuiTheme = createMuiTheme({
     },
   },
   overrides: {
+    MuiAppBar: {
+      positionAbsolute: {
+        top: 0,
+        left: "auto",
+        /* right: 0; */
+        position: "absolute",
+      },
+    },
     MuiContainer: {
       root: {
         display: "flex",
         justifyContent: "center",
         flexFlow: "wrap",
-        paddingLeft: "26px",
-        paddingRight: "26px"
-      }
+        paddingLeft: "36px",
+        paddingRight: "36px",
+        height: "100vh"
+      },
     },
     MuiInputBase: {
       root: {
-        fontSize: "21px",
+        fontSize: "20px",
       },
     },
     MuiCssBaseline: {

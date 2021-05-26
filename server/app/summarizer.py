@@ -13,7 +13,6 @@ from string import punctuation
 
 from uuid import uuid4
 
-
 def setup_environment():
     """Download required resources."""
     nltk.download('punkt')
@@ -109,12 +108,11 @@ summaries = []
 def addSummary(summaryData):
     summaries.append(summaryData)
 
-def getSummary(articleURL, summaryResult, sentences):
+def getSummary(summaryResult):
     summaryData = {
         'id': str(uuid4()), 
+        'title': "title",
         'text': summaryResult,
-        'url': articleURL,
-        'sentences': sentences
         }
     return summaryData
 

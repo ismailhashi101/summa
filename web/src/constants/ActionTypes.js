@@ -1,3 +1,0 @@
-export const ADD_SUMMARY = 'ADD_SUMMARY';
-export const DELETE_SUMMARY = 'DELETE_SUMMARY';
-export const EDIT_SUMMARY_TITLE = 'EDIT_SUMMARY_TITLE';

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
+import { connect } from "react-redux";
+import { addSummary } from "../../../../actions";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
 import { green } from "@material-ui/core/colors";
 
 // import PublishIcon from "@material-ui/icons/Publish";
@@ -26,10 +26,8 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     top: "90px",
     margin: "2%",
-    marginLeft: 0,
     maxWidth: theme.spacing(200),
-    width: "600px",
-    paddingTop: "2%",
+    width: "700px",
   },
   summaryTitle: {
     width: "max-content",
@@ -86,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0.015rem",
     display: "flex",
     width: "100%",
-    alignItems: "center"
+    alignItems: "center",
   },
   summaryResults: {
     paddingTop: "40px",
@@ -122,10 +120,10 @@ const useStyles = makeStyles((theme) => ({
     left: "50%",
     marginTop: -12,
     marginLeft: -12,
-  }
+  },
 }));
 
-export default function SummaryArea() {
+function SummaryArea({ addSummary }) {
   const classes = useStyles();
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
@@ -134,52 +132,41 @@ export default function SummaryArea() {
   //const [isFilePicked, setIsFilePicked] = useState(false);
   const [summaryBox, setSummaryBox] = React.useState("");
   const [sentences, setSentences] = React.useState("7");
-  const [summaryData, setSummaryData] = useState([
-    {
-      url: url,
-      //selectedFile: selectedFile,
-      summaryBox: summaryBox,
-      sentences: sentences,
-    },
-  ]);
+  const [summaryData, setSummaryData] = useState({
+    url: url,
+    //selectedFile: selectedFile,
+    summaryBox: summaryBox,
+    sentences: sentences,
+  });
 
   const handleSentences = (event) => {
     setSentences(event.target.value);
-    setSummaryData([
-      ...summaryData,
-      {
-        url: url,
-        //selectedFile: selectedFile,
-        summaryBox: summaryBox,
-        sentences: event.target.value,
-      },
-    ]);
+    setSummaryData({
+      url: url,
+      //selectedFile: selectedFile,
+      summaryBox: summaryBox,
+      sentences: event.target.value,
+    });
   };
 
   const handleSummaryBox = (event) => {
     setSummaryBox(event.target.value);
-    setSummaryData([
-      ...summaryData,
-      {
-        url: url,
-        //selectedFile: selectedFile,
-        summaryBox: event.target.value,
-        sentences: sentences,
-      },
-    ]);
+    setSummaryData({
+      url: url,
+      //selectedFile: selectedFile,
+      summaryBox: event.target.value,
+      sentences: sentences,
+    });
   };
 
   const handleUrl = (event) => {
     setUrl(event.target.value);
-    setSummaryData([
-      ...summaryData,
-      {
-        url: event.target.value,
-        //selectedFile: selectedFile,
-        summaryBox: summaryBox,
-        sentences: sentences,
-      },
-    ]);
+    setSummaryData({
+      url: event.target.value,
+      //selectedFile: selectedFile,
+      summaryBox: summaryBox,
+      sentences: sentences,
+    });
   };
 
   // const handleUpload = (event) => {
@@ -198,6 +185,95 @@ export default function SummaryArea() {
   //   //console.log(event.target.files[0]);
   // };
 
+  // const summarizeArticle = () => {
+  //   // const formData = new FormData();
+
+  //   // formData.append("File", selectedFile);
+
+  //   setSummaryData([
+  //     ...summaryData,
+  //     {
+  //       url: url,
+  //       //selectedFile: selectedFile,
+  //       summaryBox: summaryBox,
+  //       sentences: sentences,
+  //     },
+  //   ]);
+
+  //   axios
+  //     .post("http://localhost:5000/summarize", {
+  //       summary: summaryData,
+  //     })
+  //     .then((response) => {
+  //       console.log("We good", response.data);
+  //     })
+  //     .catch(function (error) {
+  //       if (error.response) {
+  //         console.log(error.response.data);
+  //         console.log(error.response.status);
+  //       } else if (error.request) {
+  //         // The request was made but no response was received
+  //         console.log(error.request);
+  //       } else {
+  //         // Something happened in setting up the request that triggered an Error
+  //         console.log("Error", error.message);
+  //       }
+  //     });
+  // };
+
+  // const handleSentences = (event) => {
+  //   setSentences(event.target.value);
+  //   setSummaryData({
+  //     url: url,
+  //     //selectedFile: selectedFile,
+  //     summaryBox: summaryBox,
+  //     sentences: sentences,
+  //   });
+  // };
+
+  // const handleSummaryBox = (event) => {
+  //   setSummaryBox(event.target.value);
+  //   setSummaryData({
+  //     url: url,
+  //     //selectedFile: selectedFile,
+  //     summaryBox: summaryBox,
+  //     sentences: sentences,
+  //   });
+  // };
+
+  // const handleUrl = (event) => {
+  //   setUrl(event.target.value);
+  //   setSummaryData({
+  //     url: url,
+  //     //selectedFile: selectedFile,
+  //     summaryBox: summaryBox,
+  //     sentences: sentences,
+  //   });
+  //   console.log(summaryData);
+
+  // };
+
+  //   const handleUpload = (event) => {
+  //     setSelectedFile(event.target.files[0]);
+  //     setIsFilePicked(true);
+  //     setSummaryData([
+  //       ...summaryData,
+  //       {
+  //         id: uuid(),
+  //         url: url,
+  //         //selectedFile: event.target.files[0],
+  //         summaryBox: summaryBox,
+  //         sentences: sentences,
+  //       },
+  //     ]);
+  //     //console.log(event.target.files[0]);
+  //   };
+
+  const handleAddSummary = (summary) => {
+    // dispatches actions to add summary
+    addSummary(summary.id, summary.title, summary.text);
+  };
+
   const handleButtonClick = () => {
     if (!loading) {
       setSuccess(false);
@@ -206,21 +282,17 @@ export default function SummaryArea() {
   };
 
   const summarizeArticle = () => {
-    handleButtonClick()
+    handleButtonClick();
 
     // const formData = new FormData();
-
     // formData.append("File", selectedFile);
 
-    setSummaryData([
-      ...summaryData,
-      {
-        url: url,
-        //selectedFile: selectedFile,
-        summaryBox: summaryBox,
-        sentences: sentences,
-      },
-    ]);
+    setSummaryData({
+      url: url,
+      //selectedFile: selectedFile,
+      summaryBox: summaryBox,
+      sentences: sentences,
+    });
 
     axios
       .post("http://localhost:5000/summarize", {
@@ -228,6 +300,7 @@ export default function SummaryArea() {
       })
       .then((response) => {
         console.log("We good", response.data);
+        handleAddSummary(response.data);
         setSuccess(true);
         setLoading(false);
       })
@@ -243,6 +316,16 @@ export default function SummaryArea() {
           console.log("Error", error.message);
         }
       });
+
+    setSummaryData({
+      url: "",
+      //selectedFile: selectedFile,
+      summaryBox: "",
+      sentences: sentences,
+    });
+
+    setSummaryBox("");
+    setUrl("");
   };
 
   return (
@@ -343,11 +426,13 @@ export default function SummaryArea() {
           >
             Summarize
             {loading && (
-            <CircularProgress size={24} className={classes.buttonProgress} />
-          )}
+              <CircularProgress size={24} className={classes.buttonProgress} />
+            )}
           </Button>
         </div>
       </div>
     </div>
   );
 }
+
+export default connect(null, { addSummary })(SummaryArea);

@@ -33,31 +33,37 @@ const useStyles = makeStyles((theme) => ({
       "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
     letterSpacing: "0.015rem",
   },
-  learnMore: {
-    fontFamily:
-      "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
-    fontWeight: 900,
-    letterSpacing: "0.015rem",
-  },
 }));
 
 export default function SummaryCard({ summaryItem }) {
   const classes = useStyles();
   const [title, setTitle] = useState(summaryItem.title);
-  const [summary, setSummary] = useState(summaryItem.text);
-  //const [summaryDetails, setSummaryDetails] = useState(summaryItem.details);
+  const [summaryData, setSummaryData] = useState(
+    {
+      id: summaryItem.id,
+      title: title,
+      url: summaryItem.url,
+      text: summaryItem.text,
+      sentences: summaryItem.sentences,
+    }
+  );
 
   const handleTitle = (event) => {
     setTitle(event.target.value);
-    setSummary([
-      ...summary,
+    setSummaryData([
+      ...summaryData,
       {
+        id: summaryData.id,
         title: event.target.value,
+        url: summaryData.url,
+        text: summaryData.text,
+        sentences: summaryData.sentences,
       },
     ]);
-  };
 
-  const onChangeTitle = (event) => setTitle(event.target.value);
+    console.log("title", title);
+    console.log("summary", summaryData);
+  };
 
   return (
     <Card className={classes.root}>
@@ -66,14 +72,18 @@ export default function SummaryCard({ summaryItem }) {
           className={classes.title}
           color="textSecondary"
           gutterBottom
-          variant="h5"
+          variant="h4"
         >
           <TextField
-            value={title}
+            className={classes.cardTitle}
             color="secondary"
-            //onChange={handleTitle}
+            size="small"
             placeholder="Title"
             margin="dense"
+            type="text"
+            autoComplete="off"
+            value={title}
+            onChange={handleTitle}
             InputLabelProps={{
               shrink: true,
             }}
@@ -84,7 +94,7 @@ export default function SummaryCard({ summaryItem }) {
           component="p"
           className={classes.cardParagraph}
         >
-          {summary}
+          {summaryData.text}
         </Typography>
       </CardContent>
     </Card>
