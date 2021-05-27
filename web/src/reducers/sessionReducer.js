@@ -2,7 +2,7 @@ import * as actionTypes from "../store/constants/ActionTypes";
 
 const initialState = {
   allIds: [],
-  byIds: {}
+  byIds: {},
 };
 
 export default function appReducer(state = initialState, action) {
@@ -16,9 +16,35 @@ export default function appReducer(state = initialState, action) {
           ...state.byIds,
           [id]: {
             title,
-            text
-          }
-        }
+            text,
+          },
+        },
+      };
+    }
+    case actionTypes.DELETE_SUMMARY: {
+      const { id } = action.payload;
+      return {
+        ...state,
+        byIds: {
+          ...state.byIds,
+          [id]: {
+            ...state.byIds[id],
+            completed: !state.byIds[id].completed,
+          },
+        },
+      };
+    }
+    case actionTypes.EDIT_SUMMARY_TITLE: {
+      const { id, title } = action.payload;
+      return {
+        ...state,
+        byIds: {
+          ...state.byIds,
+          [id]: {
+            ...state.byIds[id],
+            completed: !state.byIds[id].completed,
+          },
+        },
       };
     }
     default:
