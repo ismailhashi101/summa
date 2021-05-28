@@ -18,26 +18,20 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(90),
   },
   noContent: {
-    // align: "center",
-    // display: "none",
-    // position: "relative",
-    // top: "110px",
-    // paddingBottom: "70px",
-    // marginTop: "1%",
-    // marginBottom: "2%",
-    // width: theme.spacing(90),
     display: "none"
   },
   summaryResults: {
     paddingBottom: "20px",
     fontFamily:
       "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
-    fontWeight: 400,
+      // -webkit-font-smoothing: antialiased;
+    webkitFontSmoothing: "antialiased",
+    fontWeight: 500,
     display: "flex",
     width: "100%",
     alignItems: "center",
-    fontSize: "30px",
-    letterSpacing: "0.015rem",
+    fontSize: "xx-large",
+    letterSpacing: "0.015rem"
   },
   summaryCard: {
     width: "-webkit-fill-available",
@@ -46,41 +40,6 @@ const useStyles = makeStyles((theme) => ({
 
 function SummaryResults({ allSummaries }) {
   const classes = useStyles();
-  //const [summaryResults, setsummaryResults] = useState([]);
-
-  // useEffect(() => { 
-  //   let mounted = true;
-
-  //   const fetchSummaries = () => {
-  //     axios
-  //       .get("http://localhost:5000/summaries")
-  //       .then((response) => {
-  //         if (mounted) {
-  //           setsummaryResults(response.data);
-  //         }
-  //       })
-  //       .catch(function (error) {
-  //         if (error.response) {
-  //           console.log(error.response.data);
-  //           console.log(error.response.status);
-  //         } else if (error.request) {
-  //           // The request was made but no response was received
-  //           console.log(error.request);
-  //         } else {
-  //           // Something happened in setting up the request that triggered an Error
-  //           console.log("Error", error.message);
-  //         }
-  //       });
-  //   };
-
-  //   fetchSummaries();
-
-  //   //console.log(summaries);
-
-  //   return () => {
-  //     mounted = false;
-  //   };
-  // }, []);
     
   const renderedListItems = allSummaries.map((summary) => {
     return (

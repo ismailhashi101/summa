@@ -1,4 +1,5 @@
 import * as actionTypes from "../store/constants/ActionTypes";
+import { omit } from "lodash";
 
 const initialState = {
   allIds: [],
@@ -6,6 +7,7 @@ const initialState = {
 };
 
 export default function appReducer(state = initialState, action) {
+  console.log(state);
   switch (action.type) {
     case actionTypes.ADD_SUMMARY: {
       const { id, title, text } = action.payload;
@@ -25,13 +27,8 @@ export default function appReducer(state = initialState, action) {
       const { id } = action.payload;
       return {
         ...state,
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed,
-          },
-        },
+        allIds: state.allIds.filter((index) => index !== id),
+        byIds: omit(state.byIds, id),
       };
     }
     case actionTypes.EDIT_SUMMARY_TITLE: {
@@ -41,8 +38,7 @@ export default function appReducer(state = initialState, action) {
         byIds: {
           ...state.byIds,
           [id]: {
-            ...state.byIds[id],
-            completed: !state.byIds[id].completed,
+            title,
           },
         },
       };
