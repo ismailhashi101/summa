@@ -10,7 +10,7 @@ export default function appReducer(state = initialState, action) {
   console.log(state);
   switch (action.type) {
     case actionTypes.ADD_SUMMARY: {
-      const { id, title, text } = action.payload;
+      const { id, title, text, time } = action.payload;
       return {
         ...state,
         allIds: [...state.allIds, id],
@@ -19,6 +19,7 @@ export default function appReducer(state = initialState, action) {
           [id]: {
             title,
             text,
+            time
           },
         },
       };

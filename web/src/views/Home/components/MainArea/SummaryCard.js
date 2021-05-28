@@ -44,29 +44,10 @@ const useStyles = makeStyles(() => ({
 function SummaryCard({ summaryItem, deleteSummary, editSummary }) {
   const classes = useStyles();
   const [title, setTitle] = useState(summaryItem.title);
-  // const [summaryData, setSummaryData] = useState({
-  //   id: summaryItem.id,
-  //   title: title,
-  //   url: summaryItem.url,
-  //   text: summaryItem.text,
-  //   sentences: summaryItem.sentences,
-  // });
 
   const handleTitle = (event) => {
     setTitle(event.target.value);
-    // setSummaryData([
-    //   ...summaryData,
-    //   {
-    //     id: summaryData.id,
-    //     title: event.target.value,
-    //     url: summaryData.url,
-    //     text: summaryData.text,
-    //     sentences: summaryData.sentences,
-    //   },
-    // ]);
-
     handleEditSummary(summaryItem.id, title);
-    
   };
 
   const handleDeleteSummary = () => {
@@ -109,7 +90,7 @@ function SummaryCard({ summaryItem, deleteSummary, editSummary }) {
             />
           </Typography>
         }
-        subheader="Summarized in 30 seconds!"
+        // subheader={"Summarized in {summaryItem.time} seconds!"}
       />
       <CardContent className={classes.cardContent}>
         <Typography

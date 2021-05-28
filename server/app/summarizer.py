@@ -104,17 +104,12 @@ def spacy_summarizer(raw_docx):
     summary = ' '.join(final_sentences)
     return summary
 
-summaries = []
-def addSummary(summaryData):
-    summaries.append(summaryData)
-
-def getSummary(summaryResult):
+def getSummary(summaryResult, time):
     summaryData = {
         'id': str(uuid4()), 
         'title': "title",
         'text': summaryResult,
+        'time': time
         }
+        
     return summaryData
-
-def getSummaries():
-    return summaries

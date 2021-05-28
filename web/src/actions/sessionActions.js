@@ -1,11 +1,12 @@
 import * as types from "../store/constants/ActionTypes";
 
-export const addSummary = (id, title, text) => ({
+export const addSummary = (id, title, text, time) => ({
   type: types.ADD_SUMMARY,
   payload: {
     id,
     title,
     text,
+    time
   },
 });
 

@@ -270,8 +270,7 @@ function SummaryArea({ addSummary }) {
   //   };
 
   const handleAddSummary = (summary) => {
-    // dispatches actions to add summary
-    addSummary(summary.id, summary.title, summary.text);
+    addSummary(summary.id, summary.title, summary.text, summary.time);
   };
 
   const handleButtonClick = () => {
