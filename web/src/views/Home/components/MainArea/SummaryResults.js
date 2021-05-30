@@ -24,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "20px",
     fontFamily:
       "Metropolis, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
-      // -webkit-font-smoothing: antialiased;
-    webkitFontSmoothing: "antialiased",
     fontWeight: 500,
     display: "flex",
     width: "100%",

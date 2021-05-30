@@ -7,17 +7,17 @@ import { configureStore } from "./store";
 
 import Home from "./views/Home";
 
-const {store, persistor} = configureStore();
+const { store, persistor } = configureStore();
 
 export default function App() {
   return (
-    <StoreProvider store={store}>
-      <ThemeProvider theme={light}>
-        <PersistGate loading={null} persistor={persistor}>
-          <CssBaseline />
-          <Home />
-        </PersistGate>
-      </ThemeProvider>
-    </StoreProvider>
+      <StoreProvider store={store}>
+        <ThemeProvider theme={light}>
+          <PersistGate loading={null} persistor={persistor}>
+            <CssBaseline />
+            <Home />
+          </PersistGate>
+        </ThemeProvider>
+      </StoreProvider>
   );
 }

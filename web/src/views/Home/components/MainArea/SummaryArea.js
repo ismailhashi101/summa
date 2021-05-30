@@ -7,6 +7,15 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { green } from "@material-ui/core/colors";
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
+
+import MuiAlert from "@material-ui/lab/Alert";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 // import PublishIcon from "@material-ui/icons/Publish";
 // import IconButton from "@material-ui/core/IconButton";
@@ -16,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
+    },
+    width: "100%",
+    "& > * + *": {
+      marginTop: theme.spacing(2),
     },
   },
   input: {
@@ -123,10 +136,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const snackBarMessages = [
+  { variant: "success", message: "Successfully done the operation." },
+  { variant: "error", message: "Something went wrong." },
+  { variant: "warning", message: "Be careful of what you just did!" },
+  { variant: "info", message: "For your info..." },
+];
+
 function SummaryArea({ addSummary }) {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [severity, setSeverity] = React.useState();
   const [loading, setLoading] = React.useState(false);
-  const [success, setSuccess] = React.useState(false);
   const [url, setUrl] = React.useState("");
   //const [selectedFile, setSelectedFile] = useState();
   //const [isFilePicked, setIsFilePicked] = useState(false);
@@ -275,9 +296,16 @@ function SummaryArea({ addSummary }) {
 
   const handleButtonClick = () => {
     if (!loading) {
-      setSuccess(false);
       setLoading(true);
     }
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   const summarizeArticle = () => {
@@ -300,10 +328,14 @@ function SummaryArea({ addSummary }) {
       .then((response) => {
         console.log("We good", response.data);
         handleAddSummary(response.data);
-        setSuccess(true);
         setLoading(false);
+        setOpen(true);
+        setSeverity("success");
       })
       .catch(function (error) {
+        setLoading(false);
+        setOpen(true);
+        setSeverity("error");
         if (error.response) {
           console.log(error.response.data);
           console.log(error.response.status);
@@ -430,6 +462,17 @@ function SummaryArea({ addSummary }) {
           </Button>
         </div>
       </div>
+      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+        {severity == "success" ? (
+          <Alert onClose={handleClose} severity="success">
+            Summarized Successfully!
+          </Alert>
+        ) : (
+          <Alert onClose={handleClose} severity="error">
+            Could not summarize text!
+          </Alert>
+        )}
+      </Snackbar>
     </div>
   );
 }
