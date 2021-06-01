@@ -6,12 +6,9 @@ import { addSummary } from "../../../../actions";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { green } from "@material-ui/core/colors";
 import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-
 import MuiAlert from "@material-ui/lab/Alert";
+import { green } from "@material-ui/core/colors";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -136,17 +133,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const snackBarMessages = [
-  { variant: "success", message: "Successfully done the operation." },
-  { variant: "error", message: "Something went wrong." },
-  { variant: "warning", message: "Be careful of what you just did!" },
-  { variant: "info", message: "For your info..." },
-];
-
 function SummaryArea({ addSummary }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [severity, setSeverity] = React.useState();
+  const [severity, setSeverity] = React.useState(null);
+  const [alertMessage, setAlertMessage] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [url, setUrl] = React.useState("");
   //const [selectedFile, setSelectedFile] = useState();
@@ -206,90 +197,6 @@ function SummaryArea({ addSummary }) {
   //   //console.log(event.target.files[0]);
   // };
 
-  // const summarizeArticle = () => {
-  //   // const formData = new FormData();
-
-  //   // formData.append("File", selectedFile);
-
-  //   setSummaryData([
-  //     ...summaryData,
-  //     {
-  //       url: url,
-  //       //selectedFile: selectedFile,
-  //       summaryBox: summaryBox,
-  //       sentences: sentences,
-  //     },
-  //   ]);
-
-  //   axios
-  //     .post("http://localhost:5000/summarize", {
-  //       summary: summaryData,
-  //     })
-  //     .then((response) => {
-  //       console.log("We good", response.data);
-  //     })
-  //     .catch(function (error) {
-  //       if (error.response) {
-  //         console.log(error.response.data);
-  //         console.log(error.response.status);
-  //       } else if (error.request) {
-  //         // The request was made but no response was received
-  //         console.log(error.request);
-  //       } else {
-  //         // Something happened in setting up the request that triggered an Error
-  //         console.log("Error", error.message);
-  //       }
-  //     });
-  // };
-
-  // const handleSentences = (event) => {
-  //   setSentences(event.target.value);
-  //   setSummaryData({
-  //     url: url,
-  //     //selectedFile: selectedFile,
-  //     summaryBox: summaryBox,
-  //     sentences: sentences,
-  //   });
-  // };
-
-  // const handleSummaryBox = (event) => {
-  //   setSummaryBox(event.target.value);
-  //   setSummaryData({
-  //     url: url,
-  //     //selectedFile: selectedFile,
-  //     summaryBox: summaryBox,
-  //     sentences: sentences,
-  //   });
-  // };
-
-  // const handleUrl = (event) => {
-  //   setUrl(event.target.value);
-  //   setSummaryData({
-  //     url: url,
-  //     //selectedFile: selectedFile,
-  //     summaryBox: summaryBox,
-  //     sentences: sentences,
-  //   });
-  //   console.log(summaryData);
-
-  // };
-
-  //   const handleUpload = (event) => {
-  //     setSelectedFile(event.target.files[0]);
-  //     setIsFilePicked(true);
-  //     setSummaryData([
-  //       ...summaryData,
-  //       {
-  //         id: uuid(),
-  //         url: url,
-  //         //selectedFile: event.target.files[0],
-  //         summaryBox: summaryBox,
-  //         sentences: sentences,
-  //       },
-  //     ]);
-  //     //console.log(event.target.files[0]);
-  //   };
-
   const handleAddSummary = (summary) => {
     addSummary(summary.id, summary.title, summary.text, summary.time);
   };
@@ -308,9 +215,74 @@ function SummaryArea({ addSummary }) {
     setOpen(false);
   };
 
-  const summarizeArticle = () => {
-    handleButtonClick();
+  const validateSummary = (summary) => {
+    if (isBlank(summary)) {
+      setSeverity("error");
+      setAlertMessage("Could not validate SUMMARY!");
+      return false;
+    }
 
+    return true;
+  };
+
+  const validateSummaryData = (summaryData) => {
+    if (summaryData.sentences > 40) {
+      setOpen(true);
+      setSeverity("error");
+      setAlertMessage("Too many sentences ... MAX is 40!");
+      return false;
+    }
+
+    if (isBlank(summaryData.url) && isBlank(summaryData.summaryBox)) {
+      setOpen(true);
+      setSeverity("warning");
+      setAlertMessage("Nothing to summarize!");
+      return false;
+    }
+
+    if (!isBlank(summaryData.url) && isBlank(summaryData.summaryBox)) {
+      // summarize article URL if textbox is empty
+      if (!validateUrl(summaryData.url)) {
+        setOpen(true);
+        setSeverity("error");
+        setAlertMessage("Invalid Url");
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    if (isBlank(summaryData.url) && !isBlank(summaryData.summaryBox)) {
+      // summarize textbox if URL is empty
+      const textFieldlength = summaryData.summaryBox.length;
+      if (textFieldlength < 1000) {
+        // if less than 1000 characters
+        setOpen(true);
+        setSeverity("info");
+        setAlertMessage("Text is too short!");
+        return false;
+      }
+    } else {
+      setOpen(true);
+      setSeverity("error");
+      setAlertMessage("Could not validate TEXT!");
+      return false;
+    }
+
+    return true;
+  };
+
+  function isBlank(str) {
+    return !str || /^\s*$/.test(str);
+  }
+
+  function validateUrl(value) {
+    return /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(
+      value
+    );
+  }
+
+  const summarizeArticle = () => {
     // const formData = new FormData();
     // formData.append("File", selectedFile);
 
@@ -321,43 +293,81 @@ function SummaryArea({ addSummary }) {
       sentences: sentences,
     });
 
-    axios
-      .post("http://localhost:5000/summarize", {
-        summary: summaryData,
-      })
-      .then((response) => {
-        console.log("We good", response.data);
-        handleAddSummary(response.data);
-        setLoading(false);
-        setOpen(true);
-        setSeverity("success");
-      })
-      .catch(function (error) {
-        setLoading(false);
-        setOpen(true);
-        setSeverity("error");
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log("Error", error.message);
-        }
-      });
+    if (validateSummaryData(summaryData)) {
+      handleButtonClick();
+      axios
+        .post("http://localhost:5000/summarize", {
+          summary: summaryData,
+        })
+        .then((response) => {
+          console.log("Response: ", response.data);
+          setLoading(false);
+          if (validateSummary(response.data)) {
+            handleAddSummary(response.data);
+            setOpen(true);
+            setSeverity("success");
+            setAlertMessage("Summarized Successfully!");
+          }
+        })
+        .catch(function (error) {
+          setLoading(false);
+          setOpen(true);
+          setSeverity("error");
+          setAlertMessage("Text could not be summarized!");
+          if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+          } else if (error.request) {
+            // The request was made but no response was received
+            console.log(error.request);
+          } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log("Error", error.message);
+          }
+        });
+    }
 
+    //setLoading(false);
     setSummaryData({
       url: "",
       //selectedFile: selectedFile,
       summaryBox: "",
       sentences: sentences,
     });
-
     setSummaryBox("");
     setUrl("");
   };
+
+  function renderSwitch(severity) {
+    switch (severity) {
+      case "success":
+        return (
+          <Alert onClose={handleClose} severity={severity}>
+            {alertMessage}
+          </Alert>
+        );
+      case "error":
+        return (
+          <Alert onClose={handleClose} severity={severity}>
+            {alertMessage}
+          </Alert>
+        );
+      case "warning":
+        return (
+          <Alert onClose={handleClose} severity={severity}>
+            {alertMessage}
+          </Alert>
+        );
+      case "info":
+        return (
+          <Alert onClose={handleClose} severity={severity}>
+            {alertMessage}
+          </Alert>
+        );
+      default:
+        return null;
+    }
+  }
 
   return (
     <div className={classes.content}>
@@ -462,16 +472,8 @@ function SummaryArea({ addSummary }) {
           </Button>
         </div>
       </div>
-      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
-        {severity == "success" ? (
-          <Alert onClose={handleClose} severity="success">
-            Summarized Successfully!
-          </Alert>
-        ) : (
-          <Alert onClose={handleClose} severity="error">
-            Could not summarize text!
-          </Alert>
-        )}
+      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+        {renderSwitch(severity)}
       </Snackbar>
     </div>
   );
