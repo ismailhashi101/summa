@@ -1,5 +1,6 @@
 import requests
 import spacy
+import tldextract
 
 from uuid import uuid4
 from bs4 import BeautifulSoup
@@ -16,21 +17,34 @@ LANGUAGE = "english"
 nlp = spacy.load("en_core_web_sm")
 
 
+def getTextFromUrl(url):
+    parser = HtmlParser.from_url(url, Tokenizer(LANGUAGE))
+    return parser.document
+
+
+def getTextFromFile(file):
+    # only for plain text files right now
+    # document.txt
+    parser = PlaintextParser.from_file(file, Tokenizer(LANGUAGE))
+    return parser.document
+
+
+def getTextFromString(text):
+    parser = PlaintextParser.from_string(text, Tokenizer(LANGUAGE))
+    return parser.document
+
+
 def getText(url):
-    try:
-        # parser = HtmlParser.from_url(url, Tokenizer(LANGUAGE))
-        html_text = requests.get(url).text
-    except Exception as e:
-        print(e.reason)
-        print("Unable to get URL. Please make sure it's valid and try again.")
-        return False
-    return html_text
+    htmlText = requests.get(url).text
+    soup = BeautifulSoup(htmlText, "html.parser")
+    title = soup.find("title").string
+    strippedText = soup.get_text()
+    return title, strippedText
 
 
-def stripHtml(text):
-    soup = BeautifulSoup(text, "html.parser")
-    stripped_text = soup.get_text()
-    return stripped_text
+def getDomainName(url):
+    extract = tldextract.extract(url)
+    return ".".join([extract.domain, extract.suffix])
 
 
 def contentReducedBy(originalText, finalText):
@@ -42,36 +56,38 @@ def contentReducedBy(originalText, finalText):
 
 
 def getKeywords(originalText):
-    res = keywords.keywords(originalText)
-    # print(len(res))
-    return res
+    # get the top 10 keywords
+    keywordsString = keywords.keywords(originalText)
+    res = keywordsString.split("\n")
+    return res[0:10]
 
 
 def getSummaryTime(initialTime, finalTime):
     return finalTime - initialTime
 
 
-def summarizeText(docx, SENTENCES_COUNT):
-    parser = PlaintextParser.from_string(docx, Tokenizer("english"))
+def summarizeText(url, sentence_count):
+    parser = HtmlParser.from_url(url, Tokenizer(LANGUAGE))
     stemmer = Stemmer(LANGUAGE)
     model = Summarizer(stemmer)
     model.stop_words = get_stop_words(LANGUAGE)
-    extracted_sentences = model(parser.document, SENTENCES_COUNT)
-
+    extracted_sentences = model(parser.document, sentence_count)
     summary = [str(sentence) for sentence in extracted_sentences]
+    return summary, " ".join(summary)
 
-    # summary = []
-    # for i, sentence in enumerate(extracted_sentences):
-    #     summary.append(str(sentence).strip())
-
-    print(summary)
+def summarizeFurther(text, sentence_count):
+    parser = PlaintextParser.from_string(text, Tokenizer(LANGUAGE))
+    stemmer = Stemmer(LANGUAGE)
+    model = Summarizer(stemmer)
+    model.stop_words = get_stop_words(LANGUAGE)
+    extracted_sentences = model(parser.document, sentence_count)
+    summary = [str(sentence) for sentence in extracted_sentences]
     return summary, " ".join(summary)
 
 
 def getSummary(
     articleURL,
     title,
-    originalText,
     summaryResult,
     summaryTime,
     contentReducedBy,
@@ -80,12 +96,11 @@ def getSummary(
 ):
     summaryData = {
         "id": str(uuid4()),
-        "url": articleURL,  # URL of the article
+        "url": articleURL,  # Url of the article
         "title": title,  # The article's titled
-        "originalText": originalText,  # original text
-        "summary": summaryResult,  # summarized text
-        "summaryTime": summaryTime,  # total summary time
-        "contentReducedBy": contentReducedBy,  # Percent by which reduced
+        "summary": summaryResult,  # Summarized text
+        "summaryTime": summaryTime,  # Total summary time
+        "contentReducedBy": contentReducedBy,  # Percent reduced by
         "sentences": sentences,  # Number of sentences
         "keywords": keywords,  # Keywords
     }
