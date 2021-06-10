@@ -197,8 +197,17 @@ function SummaryArea({ addSummary }) {
   //   //console.log(event.target.files[0]);
   // };
 
-  const handleAddSummary = (summary) => {
-    addSummary(summary.id, summary.title, summary.text, summary.time);
+  const handleAddSummary = (summaryObject) => {
+    addSummary(
+      summaryObject.id,
+      summaryObject.url,
+      summaryObject.title,
+      summaryObject.summary,
+      summaryObject.summaryTime,
+      summaryObject.contentReducedBy,
+      summaryObject.sentences,
+      summaryObject.keywords
+    );
   };
 
   const handleButtonClick = () => {
@@ -313,7 +322,7 @@ function SummaryArea({ addSummary }) {
           setLoading(false);
           setOpen(true);
           setSeverity("error");
-          setAlertMessage("Text could not be summarized!");
+          setAlertMessage("Ooops, text could not be summarized!");
           if (error.response) {
             console.log(error.response.data);
             console.log(error.response.status);
@@ -327,7 +336,6 @@ function SummaryArea({ addSummary }) {
         });
     }
 
-    //setLoading(false);
     setSummaryData({
       url: "",
       //selectedFile: selectedFile,
