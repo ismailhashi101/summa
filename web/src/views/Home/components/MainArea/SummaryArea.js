@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flow-root",
     flexWrap: "wrap",
     width: "-webkit-fill-available",
-    height: "-webkit-fill-available",
+//     height: "-webkit-fill-available",
     fontSize: "larger",
     padding: theme.spacing(3, 0, 0),
     margin: "0 auto",
