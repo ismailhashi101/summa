@@ -1,0 +1,8 @@
+summa==1.2.0
+Flask==1.1.2
+sumy==0.8.1
+tldextract==3.1.0
+requests==2.25.1
+spacy==3.0.5
+Flask_Cors==3.0.10
+beautifulsoup4==4.9.3
