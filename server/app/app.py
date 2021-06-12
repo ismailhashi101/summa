@@ -49,7 +49,7 @@ def summarizeText():
 
 
 def run_server():
-    app.debug = True
+    app.run(debug=True)
 
 
 if __name__ == "__main__":
