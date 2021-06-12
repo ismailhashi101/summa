@@ -6,3 +6,4 @@ requests==2.25.1
 spacy==3.0.5
 Flask_Cors==3.0.10
 beautifulsoup4==4.9.3
+gunicorn==19.3.0
