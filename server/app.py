@@ -67,8 +67,8 @@ def summarizeText():
     return jsonify(summary)
 
 @app.route("/hello")
- def hello():
-     return "hello!"
+def hello():
+    return "hello!"
 
 
 def getTextFromUrl(url):
