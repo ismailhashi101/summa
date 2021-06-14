@@ -66,6 +66,11 @@ def summarizeText():
 
     return jsonify(summary)
 
+@app.route("/hello")
+ def hello():
+     return "hello!"
+
+
 def getTextFromUrl(url):
     parser = HtmlParser.from_url(url, Tokenizer(LANGUAGE))
     return parser.document
