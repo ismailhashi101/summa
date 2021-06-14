@@ -2,7 +2,7 @@ import time
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 
-from app import summarize
+from server import summarize
 
 app = Flask(__name__)
 CORS(app)
@@ -46,6 +46,10 @@ def summarizeText():
     )
 
     return jsonify(summary)
+
+@app.route("/hello")
+def hello():
+    return "Hello, World!"
 
 
 def run_server():
