@@ -40,7 +40,7 @@ def summarizeText():
         summaryText = strippedText
 
     shortUrl = getDomainName(articleURL)
-    keywords = getKeywords(articleURL)
+    keywords = getKeywords(summaryText)
     summarizedSentences, summarizedText = summarizeTextFromUrl(
         articleURL, int(sentences)
     )
