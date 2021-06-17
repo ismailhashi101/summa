@@ -1,6 +1,8 @@
 import requests
-import spacy
+import nltk
 import tldextract
+import string
+import re
 
 from uuid import uuid4
 from bs4 import BeautifulSoup
@@ -13,8 +15,15 @@ from sumy.summarizers.lsa import LsaSummarizer as Summarizer
 from sumy.nlp.stemmers import Stemmer
 from sumy.utils import get_stop_words
 
+
 LANGUAGE = "english"
-nlp = spacy.load("en_core_web_sm")
+
+
+def setup_environment():
+    """Download required resources."""
+    nltk.download("punkt")
+    nltk.download("stopwords")
+    print("Completed resource downloads.")
 
 
 def getTextFromUrl(url):
@@ -48,15 +57,16 @@ def getDomainName(url):
 
 
 def contentReducedBy(originalText, finalText):
-    originalLength = len([token.text for token in nlp(originalText)])
-    summarizedLength = len([token.text for token in nlp(finalText)])
+    originalTextWords = re.split(r"\W+", originalText)
+    finalTextWords = re.split(r"\W+", finalText)
+    originalLength = len(originalTextWords)
+    summarizedLength = len(finalTextWords)
     reducedBy = originalLength - summarizedLength
     reducedPercentage = (reducedBy / originalLength) * 100
     return reducedPercentage
 
 
 def getKeywords(originalText):
-    # get the top 10 keywords
     keywordsString = keywords.keywords(originalText)
     res = keywordsString.split("\n")
     return res[0:10]
@@ -66,7 +76,7 @@ def getSummaryTime(initialTime, finalTime):
     return finalTime - initialTime
 
 
-def summarizeText(url, sentence_count):
+def summarizeTextFromUrl(url, sentence_count):
     parser = HtmlParser.from_url(url, Tokenizer(LANGUAGE))
     stemmer = Stemmer(LANGUAGE)
     model = Summarizer(stemmer)
@@ -74,6 +84,7 @@ def summarizeText(url, sentence_count):
     extracted_sentences = model(parser.document, sentence_count)
     summary = [str(sentence) for sentence in extracted_sentences]
     return summary, " ".join(summary)
+
 
 def summarizeFurther(text, sentence_count):
     parser = PlaintextParser.from_string(text, Tokenizer(LANGUAGE))
