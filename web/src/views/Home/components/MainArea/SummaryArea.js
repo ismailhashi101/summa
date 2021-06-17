@@ -305,7 +305,7 @@ function SummaryArea({ addSummary }) {
     if (validateSummaryData(summaryData)) {
       handleButtonClick();
       axios
-        .post("http://localhost:5000/summarize", {
+        .post("https://summma-server.herokuapp.com/summarize", {
           summary: summaryData,
         })
         .then((response) => {

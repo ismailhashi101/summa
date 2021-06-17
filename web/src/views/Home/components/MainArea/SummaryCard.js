@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import IconButton from "@material-ui/core/IconButton";
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 17,
     fontFamily: "Metropolis",
     fontWeight: 300,
-    color: "#091540"
+    color: "#091540",
   },
   keywordTitle: {
     fontSize: 17,
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "10px",
     paddingBottom: "10px",
     fontWeight: 300,
-    color: "#091540"
+    color: "#091540",
   },
   cardParagraph: {
     fontSize: 15,
@@ -138,14 +139,16 @@ function SummaryCard({ summaryItem, deleteSummary }) {
       <CardContent className={classes.cardContent}>
         {renderedSummary}
       </CardContent>
-      <Typography
-        className={classes.keywordTitle}
-        color="textSecondary"
-        gutterBottom
-      >
-        Top keywords are:
-      </Typography>
-      <div className={classes.cardFooter}>{renderedKeywords}</div>
+      <CardActions disableSpacing>
+        <Typography
+          className={classes.keywordTitle}
+          color="textSecondary"
+          gutterBottom
+        >
+          Top keywords are:
+        </Typography>
+        <div className={classes.cardFooter}>{renderedKeywords}</div>
+      </CardActions>
     </Card>
   );
 }
