@@ -145,18 +145,8 @@ function SummaryCard({ summaryItem, deleteSummary }) {
         >
           Top keywords are:
         </Typography>
-        <div className={classes.cardFooter}>{renderedKeywords}</div>
+        {renderedKeywords}
       </CardContent>
-      {/* <CardActions disableSpacing>
-        <Typography
-          className={classes.keywordTitle}
-          color="textSecondary"
-          gutterBottom
-        >
-          Top keywords are:
-        </Typography>
-        <div className={classes.cardFooter}>{renderedKeywords}</div>
-      </CardActions> */}
     </Card>
   );
 }
