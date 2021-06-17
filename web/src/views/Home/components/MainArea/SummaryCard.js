@@ -138,8 +138,6 @@ function SummaryCard({ summaryItem, deleteSummary }) {
       />
       <CardContent className={classes.cardContent}>
         {renderedSummary}
-      </CardContent>
-      <CardActions disableSpacing>
         <Typography
           className={classes.keywordTitle}
           color="textSecondary"
@@ -148,7 +146,17 @@ function SummaryCard({ summaryItem, deleteSummary }) {
           Top keywords are:
         </Typography>
         <div className={classes.cardFooter}>{renderedKeywords}</div>
-      </CardActions>
+      </CardContent>
+      {/* <CardActions disableSpacing>
+        <Typography
+          className={classes.keywordTitle}
+          color="textSecondary"
+          gutterBottom
+        >
+          Top keywords are:
+        </Typography>
+        <div className={classes.cardFooter}>{renderedKeywords}</div>
+      </CardActions> */}
     </Card>
   );
 }
