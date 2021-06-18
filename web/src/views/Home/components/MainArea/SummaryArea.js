@@ -133,6 +133,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function SummaryArea({ addSummary }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -305,7 +307,7 @@ function SummaryArea({ addSummary }) {
     if (validateSummaryData(summaryData)) {
       handleButtonClick();
       axios
-        .post("https://summma-server.herokuapp.com/summarize", {
+        .post("{BASE_URL}/summarize", {
           summary: summaryData,
         })
         .then((response) => {
