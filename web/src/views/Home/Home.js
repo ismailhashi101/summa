@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "@material-ui/core";
-import AppBar from "../../components/Appbar/AppBar";
+import AppBar from "../../components/AppBar/AppBar";
 import Footer from "../../components/Footer/Footer";
 import SummaryArea from "./components/MainArea/SummaryArea";
 import SummaryResults from "./components/MainArea/SummaryResults";
