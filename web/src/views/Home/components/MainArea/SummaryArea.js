@@ -307,7 +307,7 @@ function SummaryArea({ addSummary }) {
     if (validateSummaryData(summaryData)) {
       handleButtonClick();
       axios
-        .post("{BASE_URL}/summarize", {
+        .post(`${BASE_URL}/summarize`, {
           summary: summaryData,
         })
         .then((response) => {

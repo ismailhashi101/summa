@@ -59,7 +59,6 @@ function SummaryResults({ allSummaries }) {
 
 const mapStateToProps = (state) => {
   const allSummaries = getSummaries(state);
-  console.log(allSummaries);
   return { allSummaries };
 };
 

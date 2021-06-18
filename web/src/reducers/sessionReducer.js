@@ -7,7 +7,6 @@ const initialState = {
 };
 
 export default function appReducer(state = initialState, action) {
-  console.log(state);
   switch (action.type) {
     case actionTypes.ADD_SUMMARY: {
       const {
